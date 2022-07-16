@@ -8,7 +8,6 @@ extension XCUIElement {
     ///
     /// - Parameters:
     ///   - label: The expected label attribute of the element.
-    ///   - wait: <#wait description#>
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
@@ -16,13 +15,15 @@ extension XCUIElement {
     @discardableResult
     public func assertHasLabel(
         _ label: String,
-        wait: Bool = false,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        assertExists(wait: wait, file: file, line: line)
-        XCTAssertEqual(self.label, label, message() ?? "Element \(self) has incorrect label", file: file, line: line)
+        assertExists(message(), file: file, line: line)
+        if self.label != label {
+            let labelPredicate = NSPredicate(format: "\(#keyPath(XCUIElement.label)) == %@", label)
+            assertPredicate(labelPredicate, message: message() ?? "Element \(self) has incorrect label", file: file, line: line)
+        }
         return self
     }
 
@@ -69,19 +70,17 @@ extension XCUIElement {
     /// Asserts that the current UI element is hittable and enabled.
     ///
     /// - Parameters:
-    ///   - wait: <#wait description#>
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI element.
     @discardableResult
     public func assertIsInteractive(
-        wait: Bool = false,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        assertIsHittable(wait: true, message(), file: file, line: line)
+        assertIsHittable(message(), file: file, line: line)
         XCTAssertTrue(isEnabled, message() ?? "Element \(self) should be enabled", file: file, line: line)
         return self
     }
@@ -107,19 +106,17 @@ extension XCUIElement {
     /// Asserts that the current UI element exists.
     ///
     /// - Parameters:
-    ///   - wait: <#wait description#>
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI element.
     @discardableResult
     public func assertExists(
-        wait: Bool = false,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        if exists && !wait { return self }
+        if exists { return self }
         XCTAssertTrue(waitForExistence(timeout: 5), message() ?? "Element \(self) should be visible", file: file, line: line)
         return self
     }
@@ -145,19 +142,17 @@ extension XCUIElement {
     /// Asserts that the current UI element is hittable.
     ///
     /// - Parameters:
-    ///   - wait: <#wait description#>
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI element.
     @discardableResult
     public func assertIsHittable(
-        wait: Bool = false,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        if isHittable && !wait { return self }
+        if isHittable { return self }
         assertPredicate("\(#keyPath(XCUIElement.isHittable)) == TRUE", message: message() ?? "Element \(self) should be hittable", file: file, line: line)
         return self
     }
@@ -185,7 +180,7 @@ extension XCUIElement {
 
     // MARK: - Actions
 
-    /// Waits until the current UI element is hittable and enabled and then taps on it.
+    /// Asserts that the current UI element is hittable.
     ///
     /// - Parameters:
     ///   - message: An optional description of a failure.
@@ -193,13 +188,17 @@ extension XCUIElement {
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI element.
     @discardableResult
-    public func waitForInteractivityAndTap(
+    public func waitForInteractivity(
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        assertIsInteractive(wait: true, message(), file: file, line: line)
-        tap()
+        assertPredicate(
+            "\(#keyPath(XCUIElement.isHittable)) == TRUE && \(#keyPath(XCUIElement.isEnabled)) == TRUE",
+            message: message() ?? "Element \(self) should be hittable and enabled",
+            file: file,
+            line: line
+        )
         return self
     }
 }
@@ -211,7 +210,15 @@ extension XCUIElement {
         file: StaticString,
         line: UInt
     ) {
-        let predicate = NSPredicate(format: predicateFormat)
+        assertPredicate(NSPredicate(format: predicateFormat), message: message(), file: file, line: line)
+    }
+
+    private func assertPredicate(
+        _ predicate: NSPredicate,
+        message: @autoclosure () -> String,
+        file: StaticString,
+        line: UInt
+    ) {
         let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
         let result = XCTWaiter.wait(for: [expectation], timeout: 5)
         XCTAssertTrue(result == .completed, message(), file: file, line: line)
