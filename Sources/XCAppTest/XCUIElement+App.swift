@@ -19,11 +19,8 @@ extension XCUIElement {
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        assertExists(message(), file: file, line: line)
-        if self.label != label {
-            let labelPredicate = NSPredicate(format: "\(#keyPath(XCUIElement.label)) == %@", label)
-            assertPredicate(labelPredicate, message: message() ?? "Element \(self) has incorrect label", file: file, line: line)
-        }
+        assertExists(waitForAppToIdle: true, message(), file: file, line: line)
+        XCTAssertEqual(self.label, label, message() ?? "Element \(self) has incorrect label", file: file, line: line)
         return self
     }
 
@@ -105,18 +102,24 @@ extension XCUIElement {
 
     /// Asserts that the current UI element exists.
     ///
+    /// If the element exists at the time of call, this function will return immediately. If you need to make sure that the app becomes
+    /// idle before performing the check pass `waitForAppToIdle` parameter as `true`.
+    ///
     /// - Parameters:
+    ///   - waitForAppToIdle: If `true` will use `waitForExistence` method to make sure that the app is idle before passing.
+    ///     Defaults to false.
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI element.
     @discardableResult
     public func assertExists(
+        waitForAppToIdle: Bool = false,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        if exists { return self }
+        if exists && !waitForAppToIdle { return self }
         XCTAssertTrue(waitForExistence(timeout: 5), message() ?? "Element \(self) should be visible", file: file, line: line)
         return self
     }
@@ -153,7 +156,8 @@ extension XCUIElement {
         line: UInt = #line
     ) -> Self {
         if isHittable { return self }
-        assertPredicate("\(#keyPath(XCUIElement.isHittable)) == TRUE", message: message() ?? "Element \(self) should be hittable", file: file, line: line)
+        assertExists(waitForAppToIdle: true, message(), file: file, line: line)
+        XCTAssertTrue(self.isHittable, message() ?? "Element \(self) should be hittable", file: file, line: line)
         return self
     }
 
@@ -172,6 +176,25 @@ extension XCUIElement {
     ) -> Self {
         if !isHittable { return self }
         assertPredicate("\(#keyPath(XCUIElement.isHittable)) == FALSE", message: message() ?? "Element \(self) should NOT be hittable", file: file, line: line)
+        return self
+    }
+
+    /// Asserts that the current UI element is enabled.
+    ///
+    /// - Parameters:
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertIsEnabled(
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        if isEnabled { return self }
+        assertExists(waitForAppToIdle: true, message(), file: file, line: line)
+        XCTAssertTrue(self.isEnabled, message() ?? "Element \(self) should be enabled", file: file, line: line)
         return self
     }
 }
