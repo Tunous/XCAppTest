@@ -164,17 +164,20 @@ extension XCUIElement {
     /// Asserts that the current UI element is not hittable.
     ///
     /// - Parameters:
+    ///   - waitForAppToIdle: If `true` will use waiting mechanism to make sure that the app is idle before passing.
+    ///     Defaults to false.
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI element.
     @discardableResult
     public func assertIsNotHittable(
+        waitForAppToIdle: Bool = false,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        if !isHittable { return self }
+        if !isHittable && !waitForAppToIdle { return self }
         assertPredicate("\(#keyPath(XCUIElement.isHittable)) == FALSE", message: message() ?? "Element \(self) should NOT be hittable", file: file, line: line)
         return self
     }
