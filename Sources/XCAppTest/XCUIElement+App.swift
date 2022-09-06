@@ -59,7 +59,7 @@ extension XCUIElement {
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        assertExists(file: file, line: line)
+        assertExists(waitForAppToIdle: true, file: file, line: line)
         XCTAssertEqual(value as? T, expectedValue, message() ?? "Element \(self) has incorrect value", file: file, line: line)
         return self
     }
@@ -226,27 +226,5 @@ extension XCUIElement {
             line: line
         )
         return self
-    }
-}
-
-extension XCUIElement {
-    private func assertPredicate(
-        _ predicateFormat: String,
-        message: @autoclosure () -> String,
-        file: StaticString,
-        line: UInt
-    ) {
-        assertPredicate(NSPredicate(format: predicateFormat), message: message(), file: file, line: line)
-    }
-
-    private func assertPredicate(
-        _ predicate: NSPredicate,
-        message: @autoclosure () -> String,
-        file: StaticString,
-        line: UInt
-    ) {
-        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: self)
-        let result = XCTWaiter.wait(for: [expectation], timeout: 5)
-        XCTAssertTrue(result == .completed, message(), file: file, line: line)
     }
 }
