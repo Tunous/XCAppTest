@@ -10,4 +10,18 @@ extension XCUIApplication {
         XCUIDevice.shared.press(.home)
         _ = wait(for: .runningBackground, timeout: 3) || wait(for: .runningBackgroundSuspended, timeout: 3)
     }
+
+    /// Asserts that the application is not currently in foreground.
+    ///
+    /// - Parameters:
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    public func assertIsNotInForeground(
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        assertPredicate("\(#keyPath(XCUIApplication.state)) != \(XCUIApplication.State.runningForeground.rawValue)", message: message() ?? "Application should not be in foreground", file: file, line: line)
+    }
 }
