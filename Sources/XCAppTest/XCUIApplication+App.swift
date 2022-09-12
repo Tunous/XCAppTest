@@ -1,6 +1,10 @@
 import XCTest
 
 extension XCUIApplication {
+
+    /// Proxy for Safari application.
+    public static let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
+
     /// Moves the app to background and waits for its state to change to background before continuing.
     ///
     /// - Parameter message: An optional description of a failure.
