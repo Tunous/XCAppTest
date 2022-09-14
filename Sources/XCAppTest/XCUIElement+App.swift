@@ -59,8 +59,13 @@ extension XCUIElement {
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        assertExists(waitForAppToIdle: true, file: file, line: line)
-        XCTAssertEqual(value as? T, expectedValue, message() ?? "Element \(self) has incorrect value", file: file, line: line)
+        assertExists(file: file, line: line)
+        assert(
+            condition: self.value as? T == expectedValue,
+            message: message() ?? "Element \(self) has incorrect value. Expected '\(expectedValue)' but found '\(String(describing: self.value))'",
+            file: file,
+            line: line
+        )
         return self
     }
 

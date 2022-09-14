@@ -1,6 +1,18 @@
 import XCTest
 
 extension NSObject {
+    func assert(
+        condition: @autoclosure @escaping () -> Bool,
+        message: @autoclosure () -> String,
+        file: StaticString,
+        line: UInt
+    ) {
+        let predicate = NSPredicate { _, _ in
+            return condition()
+        }
+        assertPredicate(predicate, message: message(), file: file, line: line)
+    }
+
     func assertPredicate(
         _ predicateFormat: String,
         message: @autoclosure () -> String,
