@@ -36,6 +36,27 @@ Utilities for easier interaction with XCUITest methods.
 
 All of the above have optional message as last parameter that can be used to configure what is displayed if assertion fails. For example: `element.assertExists("My element should be visible")`.
 
+## Example
+
+Here is a short example from one of my apps that makes use of this library. In the test I am checking that it is possible to navigate to "Premium features" screen, verify that most important data is visible and check that it is possible to leave that screen.
+
+Note that some of the buttons are identified by enum case instead of raw string. You can see [type safe identifiers](#type-safe-identifiers) tip below to see how this is implemented.
+
+```swift
+func testOpenClosePremiumScreen() throws {
+    try launch(configuration: .init(premiumUnlocked: false)) // TODO: Add tip about helper launch configurations
+
+    app.buttons[.toggleBottomSheetButton].tap()
+    app.buttons["Unlock Premium"].waitForInteractivity().tap()
+    assertPremiumScreenIsVisible()
+    app.buttons[.unlockFeaturesButton].assertIsEnabled().assertContainsText("Lifetime access")
+    app.buttons["Restore Purchase"].assertIsEnabled()
+
+    app.buttons["Dismiss"].tap()
+    app.staticTexts["Pipilo Premium"].assertNotExists()
+}
+```
+
 ## Installation
 
 ### Swift Package Manager
