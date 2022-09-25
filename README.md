@@ -2,6 +2,40 @@
 
 Utilities for easier interaction with XCUITest methods.
 
+## What's included
+
+- `XCUIElement` extensions:
+    - Checking existence of elements:
+        - `assertExists()`
+        - `assertNotExists()`
+    - Checking interactivity of elements:
+        - `assertIsHittable()`
+        - `assertIsNotHittable()`
+        - `assertIsEnabled()`
+        - `assertIsInteractive()`
+        - `assertIsNotInteractive()`
+    - Checking value of elements:
+        - `assertHasLabel("label")`
+        - `assertContainsText("label")`
+        - `assertHasValue("equatable value")`
+    - Waiting for interactivity:
+        - `waitForInteractivity()`
+        - `assertExists(waitForAppToIdle: true)`
+- `XCUIApplication` extensions:
+    - Checking foreground state:
+        - `assertIsInForeground()`
+        - `assertIsNotInForeground()`
+    - Performing actions:
+        - `moveToBackground()`
+    - Accessing other apps:
+        - `XCUIApplication.safari`
+- `XCUIElementQuery` extensions:
+    - Checking number of elements:
+        - `assertHasCount(2)`
+        - `assertNotExists()`
+
+All of the above have optional message as last parameter that can be used to configure what is displayed if assertion fails. For example: `element.assertExists("My element should be visible")`.
+
 ## Installation
 
 ### Swift Package Manager
