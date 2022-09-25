@@ -19,8 +19,13 @@ extension XCUIElement {
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        assertExists(waitForAppToIdle: true, message(), file: file, line: line)
-        XCTAssertEqual(self.label, label, message() ?? "Element \(self) has incorrect label", file: file, line: line)
+        assertExists(message(), file: file, line: line)
+        assert(
+            condition: self.label == label,
+            message: message() ?? "Element \(self) has incorrect label",
+            file: file,
+            line: line
+        )
         return self
     }
 
