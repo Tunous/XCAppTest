@@ -18,7 +18,7 @@ extension XCUIElementQuery {
         line: UInt = #line
     ) -> Self {
         if self.count == count { return self }
-        assertPredicate("\(#keyPath(XCUIElementQuery.count)) == \(count)", message: message() ?? "Element query \(self) should return \(count) results", file: file, line: line)
+        assertPredicate("\(#keyPath(XCUIElementQuery.count)) == \(count)", message: message() ?? "Element query should return \(count) results but returned \(self.count)", file: file, line: line)
         return self
     }
 
@@ -35,8 +35,6 @@ extension XCUIElementQuery {
          file: StaticString = #file,
          line: UInt = #line
     ) -> Self {
-        if count == 0 { return self }
-        assertPredicate("\(#keyPath(XCUIElementQuery.count)) == 0", message: message() ?? "Element query \(self) should return no results", file: file, line: line)
-        return self
+        return assertHasCount(0, message() ?? "Element query \(self) should return no results but returned \(self.count)", file: file, line: line)
     }
 }

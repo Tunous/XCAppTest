@@ -22,7 +22,7 @@ extension XCUIElement {
         assertExists(message(), file: file, line: line)
         assert(
             condition: self.label == label,
-            message: message() ?? "Element \(self) has incorrect label",
+            message: message() ?? "Element has incorrect label. Expected: '\(label)' but found: '\(self.label)'",
             file: file,
             line: line
         )
@@ -45,7 +45,7 @@ extension XCUIElement {
         line: UInt = #line
     ) -> Self {
         assertExists(message(), file: file, line: line)
-        XCTAssertTrue(label.contains(text), message() ?? "Element \(self) doesn't contain substring '\(text)' in its label", file: file, line: line)
+        XCTAssertTrue(label.contains(text), message() ?? "Element doesn't contain substring '\(text)' in its label: '\(self.label)'", file: file, line: line)
         return self
     }
 
@@ -67,7 +67,7 @@ extension XCUIElement {
         assertExists(file: file, line: line)
         assert(
             condition: self.value as? T == expectedValue,
-            message: message() ?? "Element \(self) has incorrect value. Expected '\(expectedValue)' but found '\(String(describing: self.value))'",
+            message: message() ?? "Element has incorrect value. Expected '\(expectedValue)' but found '\(String(describing: self.value))'",
             file: file,
             line: line
         )
@@ -88,7 +88,7 @@ extension XCUIElement {
         line: UInt = #line
     ) -> Self {
         assertIsHittable(message(), file: file, line: line)
-        XCTAssertTrue(isEnabled, message() ?? "Element \(self) should be enabled", file: file, line: line)
+        XCTAssertTrue(isEnabled, message() ?? "Element should be enabled", file: file, line: line)
         return self
     }
 
@@ -106,7 +106,7 @@ extension XCUIElement {
         line: UInt = #line
     ) -> Self {
         assertExists(message(), file: file, line: line)
-        XCTAssertFalse(isEnabled, message() ?? "Element \(self) should NOT be enabled", file: file, line: line)
+        XCTAssertFalse(isEnabled, message() ?? "Element should NOT be enabled", file: file, line: line)
         return self
     }
 
@@ -130,7 +130,7 @@ extension XCUIElement {
         line: UInt = #line
     ) -> Self {
         if exists && !waitForAppToIdle { return self }
-        XCTAssertTrue(waitForExistence(timeout: 5), message() ?? "Element \(self) should be visible", file: file, line: line)
+        XCTAssertTrue(waitForExistence(timeout: 5), message() ?? "Element should be visible", file: file, line: line)
         return self
     }
 
@@ -148,7 +148,7 @@ extension XCUIElement {
         line: UInt = #line
     ) -> Self {
         if !exists { return self }
-        assertPredicate("\(#keyPath(XCUIElement.exists)) == FALSE", message: message() ?? "Element \(self) should NOT exist", file: file, line: line)
+        assertPredicate("\(#keyPath(XCUIElement.exists)) == FALSE", message: message() ?? "Element should NOT exist", file: file, line: line)
         return self
     }
 
@@ -167,7 +167,7 @@ extension XCUIElement {
     ) -> Self {
         if isHittable { return self }
         assertExists(waitForAppToIdle: true, message(), file: file, line: line)
-        XCTAssertTrue(self.isHittable, message() ?? "Element \(self) should be hittable", file: file, line: line)
+        XCTAssertTrue(self.isHittable, message() ?? "Element should be hittable", file: file, line: line)
         return self
     }
 
@@ -188,7 +188,7 @@ extension XCUIElement {
         line: UInt = #line
     ) -> Self {
         if !isHittable && !waitForAppToIdle { return self }
-        assertPredicate("\(#keyPath(XCUIElement.isHittable)) == FALSE", message: message() ?? "Element \(self) should NOT be hittable", file: file, line: line)
+        assertPredicate("\(#keyPath(XCUIElement.isHittable)) == FALSE", message: message() ?? "Element should NOT be hittable", file: file, line: line)
         return self
     }
 
@@ -207,7 +207,7 @@ extension XCUIElement {
     ) -> Self {
         if isEnabled { return self }
         assertExists(waitForAppToIdle: true, message(), file: file, line: line)
-        XCTAssertTrue(self.isEnabled, message() ?? "Element \(self) should be enabled", file: file, line: line)
+        XCTAssertTrue(self.isEnabled, message() ?? "Element should be enabled", file: file, line: line)
         return self
     }
 }
@@ -231,7 +231,7 @@ extension XCUIElement {
     ) -> Self {
         assertPredicate(
             "\(#keyPath(XCUIElement.isHittable)) == TRUE && \(#keyPath(XCUIElement.isEnabled)) == TRUE",
-            message: message() ?? "Element \(self) should be hittable and enabled",
+            message: message() ?? "Element should be hittable and enabled. Was hittable: \(isHittable), was enabled: \(isEnabled)",
             file: file,
             line: line
         )
