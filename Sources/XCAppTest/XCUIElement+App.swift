@@ -67,7 +67,7 @@ extension XCUIElement {
         assertExists(file: file, line: line)
         assert(
             condition: self.value as? T == expectedValue,
-            message: message() ?? "Element has incorrect value. Expected '\(expectedValue)' but found '\(String(describing: self.value))'",
+            message: message() ?? "Element has incorrect value. Expected '\(expectedValue)' but found '\(self.value ?? "")'",
             file: file,
             line: line
         )
@@ -208,6 +208,42 @@ extension XCUIElement {
         if isEnabled { return self }
         assertExists(waitForAppToIdle: true, message(), file: file, line: line)
         XCTAssertTrue(self.isEnabled, message() ?? "Element should be enabled", file: file, line: line)
+        return self
+    }
+
+    /// Asserts that the current UI element is selected.
+    ///
+    /// - Parameters:
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertIsSelected(
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        if isSelected { return self }
+        assertPredicate("\(#keyPath(XCUIElement.isSelected)) == TRUE", message: message() ?? "Element should be selected", file: file, line: line)
+        return self
+    }
+
+    /// Asserts that the current UI element is not selected.
+    ///
+    /// - Parameters:
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertIsNotSelected(
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        if !isSelected { return self }
+        assertPredicate("\(#keyPath(XCUIElement.isSelected)) == FALSE", message: message() ?? "Element should NOT be selected", file: file, line: line)
         return self
     }
 }

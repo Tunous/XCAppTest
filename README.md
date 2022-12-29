@@ -14,13 +14,16 @@ Utilities for easier interaction with XCUITest methods.
         - `assertIsEnabled()`
         - `assertIsInteractive()`
         - `assertIsNotInteractive()`
-    - Checking value of elements:
+    - Checking properties of elements:
         - `assertHasLabel("label")`
         - `assertContainsText("label")`
         - `assertHasValue("equatable value")`
     - Waiting for interactivity:
         - `waitForInteractivity()`
         - `assertExists(waitForAppToIdle: true)`
+    - Checking traits of elements:
+        - `assertIsSelected()`
+        - `assertIsNotSelected()`
 - `XCUIApplication` extensions:
     - Checking foreground state:
         - `assertIsInForeground()`
