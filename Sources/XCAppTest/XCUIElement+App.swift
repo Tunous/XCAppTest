@@ -74,6 +74,30 @@ extension XCUIElement {
         return self
     }
 
+    /// Asserts that the current UI element has placeholder value equal to `expectedPlaceholder`.
+    ///
+    /// - Parameters:
+    ///   - expectedPlaceholder: The expected placeholder value of the element.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertHasPlaceholder(
+        _ expectedPlaceholder: String?,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        assert(
+            condition: self.placeholderValue == expectedPlaceholder,
+            message: message() ?? "Element has incorrect placeholder value. Expected '\(String(describing: expectedPlaceholder))' but found '\(String(describing: self.value))'",
+            file: file,
+            line: line
+        )
+        return self
+    }
+
     /// Asserts that the current UI element is hittable and enabled.
     ///
     /// - Parameters:

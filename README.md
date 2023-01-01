@@ -18,6 +18,7 @@ Utilities for easier interaction with XCUITest methods.
         - `assertHasLabel("label")`
         - `assertContainsText("label")`
         - `assertHasValue("equatable value")`
+        - `assertHasPlaceholder("placeholder")`
     - Waiting for interactivity:
         - `waitForInteractivity()`
         - `assertExists(waitForAppToIdle: true)`
