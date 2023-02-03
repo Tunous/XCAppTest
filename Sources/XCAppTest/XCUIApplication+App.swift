@@ -2,18 +2,12 @@ import XCTest
 
 extension XCUIApplication {
 
+    // MARK: - Other applications
+
     /// Proxy for Safari application.
     public static let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
 
-    /// Moves the app to background and waits for its state to change to background before continuing.
-    ///
-    /// - Parameter message: An optional description of a failure.
-    public func moveToBackground(
-        _ message: @autoclosure () -> String? = nil
-    ) {
-        XCUIDevice.shared.press(.home)
-        _ = wait(for: .runningBackground, timeout: 3) || wait(for: .runningBackgroundSuspended, timeout: 3)
-    }
+    // MARK: - Checking state
 
     /// Asserts that the application is currently in foreground.
     ///
@@ -41,5 +35,17 @@ extension XCUIApplication {
         line: UInt = #line
     ) {
         XCAppTest.assert(condition: { $0.state != .runningForeground }, on: self, message: { message() ?? "Application should not be in foreground" }, file: file, line: line)
+    }
+
+    // MARK: - Performing actions
+
+    /// Moves the app to background and waits for its state to change to background before continuing.
+    ///
+    /// - Parameter message: An optional description of a failure.
+    public func moveToBackground(
+        _ message: @autoclosure () -> String? = nil
+    ) {
+        XCUIDevice.shared.press(.home)
+        _ = wait(for: .runningBackground, timeout: 3) || wait(for: .runningBackgroundSuspended, timeout: 3)
     }
 }

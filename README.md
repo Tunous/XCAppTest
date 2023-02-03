@@ -12,27 +12,27 @@ Utilities for easier interaction with XCUITest methods.
         - `assertIsHittable()`
         - `assertIsNotHittable()`
         - `assertIsEnabled()`
-        - `assertIsInteractive()`
-        - `assertIsNotInteractive()`
+        - `assertIsDisabled()`
+        - `assertIsInteractive()` (exists, isHittable, isEnabled)
     - Checking properties of elements:
         - `assertHasLabel("label")`
         - `assertContainsText("label")`
         - `assertHasValue("equatable value")`
         - `assertHasPlaceholder("placeholder")`
-    - Waiting for interactivity:
-        - `waitForInteractivity()`
-        - `assertExists(waitForAppToIdle: true)`
     - Checking traits of elements:
         - `assertIsSelected()`
         - `assertIsNotSelected()`
+    - Waiting for interactivity:
+        - `waitForInteractivity()`
+        - `assertExists(waitForAppToIdle: true)`
 - `XCUIApplication` extensions:
+    - Accessing other apps:
+        - `XCUIApplication.safari`
     - Checking foreground state:
         - `assertIsInForeground()`
         - `assertIsNotInForeground()`
     - Performing actions:
         - `moveToBackground()`
-    - Accessing other apps:
-        - `XCUIApplication.safari`
 - `XCUIElementQuery` extensions:
     - Checking number of elements:
         - `assertHasCount(2)`

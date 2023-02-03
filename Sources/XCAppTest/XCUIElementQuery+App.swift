@@ -2,6 +2,8 @@ import XCTest
 
 extension XCUIElementQuery {
 
+    // MARK: - Checking number of elements
+
     /// Evaluates the query and asserts that it matches `count` number of elements.
     ///
     /// - Parameters:
