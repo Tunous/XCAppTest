@@ -100,7 +100,7 @@ extension XCUIElement {
         return self
     }
 
-    /// Asserts that the current UI element is hittable and enabled.
+    /// Asserts that the current UI element exists, is hittable and enabled.
     ///
     /// - Parameters:
     ///   - message: An optional description of a failure.
@@ -114,7 +114,7 @@ extension XCUIElement {
         line: UInt = #line
     ) -> Self {
         assert(
-            condition: { $0.isEnabled && $0.isHittable },
+            condition: { $0.exists && $0.isEnabled && $0.isHittable },
             message() ?? "Element should be enabled and hittable",
             file: file,
             line: line
@@ -305,7 +305,7 @@ extension XCUIElement {
 
     // MARK: - Actions
 
-    /// Asserts that the current UI element is hittable.
+    /// Waits for the element to exist, be hittable and enabled.
     ///
     /// - Parameters:
     ///   - message: An optional description of a failure.
@@ -318,12 +318,8 @@ extension XCUIElement {
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        assert(
-            condition: { $0.isHittable && $0.isEnabled },
-            message() ?? "Element should be hittable and enabled. Was hittable: \(isHittable), was enabled: \(isEnabled)",
-            file: file,
-            line: line
-        )
+        assertExists(waitForAppToIdle: true, message() ?? "Element should exist to be interactive.", file: file, line: line)
+        assertIsInteractive(message(), file: file, line: line)
         return self
     }
 }
