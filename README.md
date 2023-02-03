@@ -7,6 +7,7 @@ Utilities for easier interaction with XCUITest methods.
 - `XCUIElement` extensions:
     - Checking existence of elements:
         - `assertExists()`
+        - `assertExists(waitForAppToIdle: true)`
         - `assertNotExists()`
     - Checking interactivity of elements:
         - `assertIsHittable()`
@@ -22,9 +23,9 @@ Utilities for easier interaction with XCUITest methods.
     - Checking traits of elements:
         - `assertIsSelected()`
         - `assertIsNotSelected()`
-    - Waiting for interactivity:
+    - Performing actions:
+        - `tapWhenReady()`
         - `waitForInteractivity()`
-        - `assertExists(waitForAppToIdle: true)`
 - `XCUIApplication` extensions:
     - Accessing other apps:
         - `XCUIApplication.safari`
@@ -51,7 +52,7 @@ func testOpenClosePremiumScreen() throws {
     try launch(configuration: .init(premiumUnlocked: false)) // TODO: Add tip about helper launch configurations
 
     app.buttons[.toggleBottomSheetButton].tap()
-    app.buttons["Unlock Premium"].waitForInteractivity().tap()
+    app.buttons["Unlock Premium"].tapWhenReady()
     assertPremiumScreenIsVisible()
     app.buttons[.unlockFeaturesButton].assertIsEnabled().assertContainsText("Lifetime access")
     app.buttons["Restore Purchase"].assertIsEnabled()
