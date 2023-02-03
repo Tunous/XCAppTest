@@ -17,8 +17,12 @@ extension XCUIElementQuery {
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        if self.count == count { return self }
-        assertPredicate("\(#keyPath(XCUIElementQuery.count)) == \(count)", message: message() ?? "Element query should return \(count) results but returned \(self.count)", file: file, line: line)
+        assert(
+            condition: { $0.count == count },
+            message() ?? "Element query should return \(count) results but returned \(self.count)",
+            file: file,
+            line: line
+        )
         return self
     }
 

@@ -26,8 +26,7 @@ extension XCUIApplication {
         file: StaticString = #file,
         line: UInt = #line
     ) {
-        _ = wait(for: .runningForeground, timeout: 3)
-        assertPredicate("\(#keyPath(XCUIApplication.state)) == \(XCUIApplication.State.runningForeground.rawValue)", message: message() ?? "Application should be in foreground", file: file, line: line)
+        XCTAssertTrue(wait(for: .runningForeground, timeout: 8), message() ?? "Application should be in foreground", file: file, line: line)
     }
 
     /// Asserts that the application is not currently in foreground.
@@ -41,6 +40,6 @@ extension XCUIApplication {
         file: StaticString = #file,
         line: UInt = #line
     ) {
-        assertPredicate("\(#keyPath(XCUIApplication.state)) != \(XCUIApplication.State.runningForeground.rawValue)", message: message() ?? "Application should not be in foreground", file: file, line: line)
+        XCAppTest.assert(condition: { $0.state != .runningForeground }, on: self, message: { message() ?? "Application should not be in foreground" }, file: file, line: line)
     }
 }
