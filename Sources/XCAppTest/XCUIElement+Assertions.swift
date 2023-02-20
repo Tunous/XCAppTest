@@ -305,42 +305,4 @@ extension XCUIElement {
         )
         return self
     }
-
-    // MARK: - Performing actions
-
-    /// Waits for the element to exist, be hittable and enabled.
-    ///
-    /// - Parameters:
-    ///   - message: An optional description of a failure.
-    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
-    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
-    /// - Returns: Unmodified UI element.
-    @discardableResult
-    public func waitForInteractivity(
-        _ message: @autoclosure () -> String? = nil,
-        file: StaticString = #file,
-        line: UInt = #line
-    ) -> Self {
-        assertExists(waitForAppToIdle: true, message() ?? "Element should exist to be interactive.", file: file, line: line)
-        assertIsInteractive(message(), file: file, line: line)
-        return self
-    }
-
-    /// Waits for the element to exist and become interactive, then taps on it.
-    ///
-    /// - Parameters:
-    ///   - message: An optional description of a failure.
-    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
-    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
-    /// - Returns: Unmodified UI element.
-    @discardableResult
-    public func tapWhenReady(
-        _ message: @autoclosure () -> String? = nil,
-        file: StaticString = #file,
-        line: UInt = #line
-    ) -> Self {
-        waitForInteractivity(message(), file: file, line: line)
-        tap()
-        return self
-    }
 }

@@ -26,6 +26,8 @@ Utilities for easier interaction with XCUITest methods.
     - Performing actions:
         - `tapWhenReady()`
         - `waitForInteractivity()`
+        - `slowTypeText("text")`
+        
 - `XCUIApplication` extensions:
     - Accessing other apps:
         - `XCUIApplication.safari`
@@ -34,6 +36,7 @@ Utilities for easier interaction with XCUITest methods.
         - `assertIsNotInForeground()`
     - Performing actions:
         - `moveToBackground()`
+        
 - `XCUIElementQuery` extensions:
     - Checking number of elements:
         - `assertHasCount(2)`
