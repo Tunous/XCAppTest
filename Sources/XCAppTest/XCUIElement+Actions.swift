@@ -16,8 +16,10 @@ extension XCUIElement {
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        assertExists(waitForAppToIdle: true, message() ?? "Element should exist to be interactive.", file: file, line: line)
-        assertIsInteractive(message(), file: file, line: line)
+        XCTContext.runActivity(named: "Wait for \(self) to be interactive") { _ in
+            assertExists(waitForAppToIdle: true, message() ?? "Element should exist to be interactive.", file: file, line: line)
+            assertIsInteractive(message(), file: file, line: line)
+        }
         return self
     }
 
@@ -34,8 +36,10 @@ extension XCUIElement {
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        waitForInteractivity(message(), file: file, line: line)
-        tap()
+        XCTContext.runActivity(named: "Tap \(self) when ready") { _ in
+            waitForInteractivity(message(), file: file, line: line)
+            tap()
+        }
         return self
     }
 

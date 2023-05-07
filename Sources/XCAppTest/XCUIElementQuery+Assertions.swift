@@ -20,6 +20,7 @@ extension XCUIElementQuery {
         line: UInt = #line
     ) -> Self {
         assert(
+            named: "Assert \(self) matches \(count) elements",
             condition: { $0.count == count },
             message() ?? "Element query should return \(count) results but returned \(self.count)",
             file: file,

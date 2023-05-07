@@ -20,7 +20,9 @@ extension XCUIApplication {
         file: StaticString = #file,
         line: UInt = #line
     ) {
-        XCTAssertTrue(wait(for: .runningForeground, timeout: 8), message() ?? "Application should be in foreground", file: file, line: line)
+        XCTContext.runActivity(named: "Assert \(self) is in foreground") { _ in
+            XCTAssertTrue(wait(for: .runningForeground, timeout: 8), message() ?? "Application should be in foreground", file: file, line: line)
+        }
     }
 
     /// Asserts that the application is not currently in foreground.
@@ -34,7 +36,15 @@ extension XCUIApplication {
         file: StaticString = #file,
         line: UInt = #line
     ) {
-        XCAppTest.assert(condition: { $0.state != .runningForeground }, on: self, message: { message() ?? "Application should not be in foreground" }, file: file, line: line)
+        XCTContext.runActivity(named: "Assert \(self) is NOT in foreground") { _ in
+            XCAppTest.assert(
+                condition: { $0.state != .runningForeground },
+                on: self,
+                message: { message() ?? "Application should not be in foreground" },
+                file: file,
+                line: line
+            )
+        }
     }
 
     // MARK: - Performing actions
@@ -45,7 +55,9 @@ extension XCUIApplication {
     public func moveToBackground(
         _ message: @autoclosure () -> String? = nil
     ) {
-        XCUIDevice.shared.press(.home)
-        _ = wait(for: .runningBackground, timeout: 3) || wait(for: .runningBackgroundSuspended, timeout: 3)
+        XCTContext.runActivity(named: "Move \(self) to background") { _ in
+            XCUIDevice.shared.press(.home)
+            _ = wait(for: .runningBackground, timeout: 3) || wait(for: .runningBackgroundSuspended, timeout: 3)
+        }
     }
 }

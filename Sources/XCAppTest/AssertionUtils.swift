@@ -2,23 +2,29 @@ import XCTest
 
 extension XCUIElement {
     func assert(
+        named assertionName: String,
         condition: @escaping (XCUIElement) -> Bool,
         _ message: @autoclosure () -> String,
         file: StaticString,
         line: UInt
     ) {
-        XCAppTest.assert(condition: condition, on: self, message: message, file: file, line: line)
+        XCTContext.runActivity(named: assertionName) { _ in
+            XCAppTest.assert(condition: condition, on: self, message: message, file: file, line: line)
+        }
     }
 }
 
 extension XCUIElementQuery {
     func assert(
+        named assertionName: String,
         condition: @escaping (XCUIElementQuery) -> Bool,
         _ message: @autoclosure () -> String,
         file: StaticString,
         line: UInt
     ) {
-        XCAppTest.assert(condition: condition, on: self, message: message, file: file, line: line)
+        XCTContext.runActivity(named: assertionName) { _ in
+            XCAppTest.assert(condition: condition, on: self, message: message, file: file, line: line)
+        }
     }
 }
 
