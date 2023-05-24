@@ -21,7 +21,7 @@ extension XCUIApplication {
         line: UInt = #line
     ) {
         XCTContext.runActivity(named: "Assert \(self) is in foreground") { _ in
-            XCTAssertTrue(wait(for: .runningForeground, timeout: 8), message() ?? "Application should be in foreground", file: file, line: line)
+            XCTAssertTrue(wait(for: .runningForeground, timeout: 8), message() ?? "\(self) should be in foreground", file: file, line: line)
         }
     }
 
@@ -40,7 +40,7 @@ extension XCUIApplication {
             XCAppTest.assert(
                 condition: { $0.state != .runningForeground },
                 on: self,
-                message: { message() ?? "Application should not be in foreground" },
+                message: { message() ?? "\(self) should not be in foreground" },
                 file: file,
                 line: line
             )

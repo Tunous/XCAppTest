@@ -27,7 +27,7 @@ extension XCUIElement {
             if !exists || waitForAppToIdle {
                 XCTAssertTrue(
                     waitForExistence(timeout: 8),
-                    message() ?? "Element should be visible",
+                    message() ?? "\(self) should be visible",
                     file: file,
                     line: line
                 )
@@ -52,7 +52,7 @@ extension XCUIElement {
         assert(
             named: "Assert \(self) NOT exists",
             condition: { !$0.exists },
-            message() ?? "Element should NOT exist",
+            message() ?? "\(self) should NOT exist",
             file: file,
             line: line
         )
@@ -77,7 +77,7 @@ extension XCUIElement {
         assert(
             named: "Assert \(self) is hittable",
             condition: { $0.isHittable },
-            message() ?? "Element should be hittable",
+            message() ?? "\(self) should be hittable",
             file: file,
             line: line
         )
@@ -100,7 +100,7 @@ extension XCUIElement {
         assert(
             named: "Assert \(self) is not hittable",
             condition: { !$0.isHittable },
-            message() ?? "Element should NOT be hittable",
+            message() ?? "\(self) should NOT be hittable",
             file: file,
             line: line
         )
@@ -123,7 +123,7 @@ extension XCUIElement {
         assert(
             named: "Assert \(self) is enabled",
             condition: { $0.isEnabled },
-            message() ?? "Element should be enabled",
+            message() ?? "\(self) should be enabled",
             file: file,
             line: line
         )
@@ -146,7 +146,7 @@ extension XCUIElement {
         assert(
             named: "Assert \(self) is NOT enabled",
             condition: { !$0.isEnabled },
-            message() ?? "Element should NOT be enabled",
+            message() ?? "\(self) should NOT be enabled",
             file: file,
             line: line
         )
@@ -169,7 +169,7 @@ extension XCUIElement {
         assert(
             named: "Assert \(self) is interactive",
             condition: { $0.exists && $0.isEnabled && $0.isHittable },
-            message() ?? "Element should be enabled and hittable",
+            message() ?? "\(self) should be enabled and hittable",
             file: file,
             line: line
         )
@@ -196,7 +196,7 @@ extension XCUIElement {
         assert(
             named: "Assert \(self) has label '\(label)'",
             condition: { $0.label == label },
-            message() ?? "Element has incorrect label. Expected: '\(label)' but found: '\(self.label)'",
+            message() ?? "\(self) has incorrect label. Expected: '\(label)' but found: '\(self.label)'",
             file: file,
             line: line
         )
@@ -221,7 +221,7 @@ extension XCUIElement {
         assert(
             named: "Assert \(self) label contains text '\(text)'",
             condition: { $0.label.contains(text) },
-            message() ?? "Element doesn't contain substring '\(text)' in its label: '\(self.label)'",
+            message() ?? "\(self) doesn't contain substring '\(text)' in its label: '\(self.label)'",
             file: file,
             line: line
         )
@@ -246,7 +246,7 @@ extension XCUIElement {
         assert(
             named: "Assert \(self) has value '\(expectedValue)'",
             condition: { $0.value as? T == expectedValue },
-            message() ?? "Element has incorrect value. Expected '\(expectedValue)' but found '\(self.value ?? "")'",
+            message() ?? "\(self) has incorrect value. Expected '\(expectedValue)' but found '\(self.value ?? "")'",
             file: file,
             line: line
         )
@@ -269,9 +269,9 @@ extension XCUIElement {
         line: UInt = #line
     ) -> Self {
         assert(
-            named: "Assert \(self) has placeholder '\(expectedPlaceholder)'",
+            named: "Assert \(self) has placeholder '\(String(describing: expectedPlaceholder))'",
             condition: { $0.placeholderValue == expectedPlaceholder },
-            message() ?? "Element has incorrect placeholder value. Expected '\(String(describing: expectedPlaceholder))' but found '\(String(describing: self.value))'",
+            message() ?? "\(self) has incorrect placeholder value. Expected '\(String(describing: expectedPlaceholder))' but found '\(String(describing: self.value))'",
             file: file,
             line: line
         )
@@ -296,7 +296,7 @@ extension XCUIElement {
         assert(
             named: "Assert \(self) is selected",
             condition: { $0.isSelected },
-            message() ?? "Element should be selected",
+            message() ?? "\(self) should be selected",
             file: file,
             line: line
         )
@@ -319,7 +319,7 @@ extension XCUIElement {
         assert(
             named: "Assert \(self) is NOT selected",
             condition: { !$0.isSelected },
-            message() ?? "Element should NOT be selected",
+            message() ?? "\(self) should NOT be selected",
             file: file,
             line: line
         )

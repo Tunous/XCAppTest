@@ -17,7 +17,7 @@ extension XCUIElement {
         line: UInt = #line
     ) -> Self {
         XCTContext.runActivity(named: "Wait for \(self) to be interactive") { _ in
-            assertExists(waitForAppToIdle: true, message() ?? "Element should exist to be interactive.", file: file, line: line)
+            assertExists(waitForAppToIdle: true, message() ?? "\(self) should exist to be interactive.", file: file, line: line)
             assertIsInteractive(message(), file: file, line: line)
         }
         return self

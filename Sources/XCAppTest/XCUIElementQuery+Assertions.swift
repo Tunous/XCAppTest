@@ -22,7 +22,7 @@ extension XCUIElementQuery {
         assert(
             named: "Assert \(self) matches \(count) elements",
             condition: { $0.count == count },
-            message() ?? "Element query should return \(count) results but returned \(self.count)",
+            message() ?? "\(self) should return \(count) results but returned \(self.count)",
             file: file,
             line: line
         )
@@ -42,6 +42,6 @@ extension XCUIElementQuery {
          file: StaticString = #file,
          line: UInt = #line
     ) -> Self {
-        return assertHasCount(0, message() ?? "Element query \(self) should return no results but returned \(self.count)", file: file, line: line)
+        return assertHasCount(0, message() ?? "\(self) should return no results but returned \(self.count)", file: file, line: line)
     }
 }
