@@ -60,4 +60,14 @@ extension XCUIElement {
         }
         return self
     }
+
+    /// Taps the element at normalized offset from its origin.
+    ///
+    /// - Parameter normalizedOffset: The normalized offset.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func tap(withNormalizedOffset normalizedOffset: CGVector) -> Self {
+        self.coordinate(withNormalizedOffset: normalizedOffset).tap()
+        return self
+    }
 }

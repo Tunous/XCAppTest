@@ -27,6 +27,7 @@ Utilities for easier interaction with XCUITest methods.
         - `tapWhenReady()`
         - `waitForInteractivity()`
         - `slowTypeText("text")`
+        - `tap(withNormalizedOffset: .center)`
         
 - `XCUIApplication` extensions:
     - Accessing other apps:
@@ -42,7 +43,13 @@ Utilities for easier interaction with XCUITest methods.
         - `assertHasCount(2)`
         - `assertNotExists()`
 
-All of the above have optional message as last parameter that can be used to configure what is displayed if assertion fails. For example: `element.assertExists("My element should be visible")`.
+- `CGVector` extensions:
+    - Normalized offsets:
+        - `topLeft`, `top`, `topRight`
+        - `left`, `center`, `right`
+        - `bottomLeft`, `bottom`, `bottomRight`
+
+All of the above assertion functions have optional message as last parameter that can be used to configure what is displayed if assertion fails. For example: `element.assertExists("My element should be visible")`.
 
 ## Example
 
@@ -52,7 +59,7 @@ Note that some of the buttons are identified by enum case instead of raw string.
 
 ```swift
 func testOpenClosePremiumScreen() throws {
-    try launch(configuration: .init(premiumUnlocked: false)) // TODO: Add tip about helper launch configurations
+    try launch(configuration: .init(premiumUnlocked: false))
 
     app.buttons[.toggleBottomSheetButton].tap()
     app.buttons["Unlock Premium"].tapWhenReady()
