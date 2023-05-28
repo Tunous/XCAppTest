@@ -28,7 +28,7 @@ Utilities for easier interaction with XCUITest methods.
         - `waitForInteractivity()`
         - `slowTypeText("text")`
         - `tap(withNormalizedOffset: .center)`
-        
+
 - `XCUIApplication` extensions:
     - Accessing other apps:
         - `XCUIApplication.safari`
@@ -37,7 +37,7 @@ Utilities for easier interaction with XCUITest methods.
         - `assertIsNotInForeground()`
     - Performing actions:
         - `moveToBackground()`
-        
+
 - `XCUIElementQuery` extensions:
     - Checking number of elements:
         - `assertHasCount(2)`
@@ -79,7 +79,7 @@ func testOpenClosePremiumScreen() throws {
 1. Add the following to the dependencies array in your `Package.swift` file:
 
 ```swift
-.package(url: "https://github.com/Tunous/XCAppTest.git"),
+.package(url: "https://github.com/Tunous/XCAppTest.git", .upToNextMajor(from: "0.4.0")),
 ```
 
 2. Add `XCAppTest` as a dependency for your **tests** target:
