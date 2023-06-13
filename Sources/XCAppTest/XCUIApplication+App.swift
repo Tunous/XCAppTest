@@ -55,6 +55,7 @@ extension XCUIApplication {
 
     // MARK: - Performing actions
 
+    #if TARGET_OS_IPHONE && !TARGET_OS_MACCATALYST
     /// Moves the app to background and waits for its state to change to background before continuing.
     ///
     /// - Parameter message: An optional description of a failure.
@@ -69,4 +70,5 @@ extension XCUIApplication {
         }
         return self
     }
+    #endif
 }
