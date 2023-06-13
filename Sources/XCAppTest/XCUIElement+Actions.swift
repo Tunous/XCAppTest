@@ -23,7 +23,7 @@ extension XCUIElement {
         return self
     }
 
-    /// Waits for the element to exist and become interactive, then taps on it.
+    /// Waits for the element to exist, then taps on it.
     ///
     /// - Parameters:
     ///   - message: An optional description of a failure.
@@ -37,7 +37,7 @@ extension XCUIElement {
         line: UInt = #line
     ) -> Self {
         XCTContext.runActivity(named: "Tap \(self) when ready") { _ in
-            waitForInteractivity(message(), file: file, line: line)
+            assertExists(waitForAppToIdle: true, message() ?? "\(self) should exists to tap on it.", file: file, line: line)
             tap()
         }
         return self
