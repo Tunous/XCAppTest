@@ -29,7 +29,7 @@ extension XCUIElementQuery {
         return self
     }
 
-    /// Evaluates the query and asserts that there are no matching elements..
+    /// Evaluates the query and asserts that there are no matching elements.
     ///
     /// - Parameters:
     ///   - message: An optional description of a failure.
