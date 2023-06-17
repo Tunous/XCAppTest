@@ -31,14 +31,17 @@ func testOpenClosePremiumScreen() throws {
 
 - ``XCAppTest/XCTest/XCUIElement/assertExists(waitForAppToIdle:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertNotExists(_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertExists(_:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElementQuery/assertNotExists(_:file:line:)``
 
 ### Checking interactivity of elements
 
 - ``XCAppTest/XCTest/XCUIElement/assertIsHittable(_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertIsNotHittable(_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsHittable(_:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertIsEnabled(_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertIsDisabled(_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsEnabled(_:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertIsInteractive(_:file:line:)``
 
 ### Checking properties of elements
@@ -52,7 +55,7 @@ func testOpenClosePremiumScreen() throws {
 
 - ``XCAppTest/XCTest/XCUIElement/assertIsSelected(_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertIsNotSelected(_:file:line:)``
-- ``XCAppTest/XCTest/XCUIApplication/moveToBackground(_:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsSelected(_:_:file:line:)``
 
 ### Performing actions
 
@@ -60,6 +63,7 @@ func testOpenClosePremiumScreen() throws {
 - ``XCAppTest/XCTest/XCUIElement/waitForInteractivity(_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/slowTypeText(_:)``
 - ``XCAppTest/XCTest/XCUIElement/tap(withNormalizedOffset:)``
+- ``XCAppTest/XCTest/XCUIApplication/moveToBackground(_:)``
 
 ### Accessing other apps
 
@@ -69,6 +73,7 @@ func testOpenClosePremiumScreen() throws {
 
 - ``XCAppTest/XCTest/XCUIApplication/assertIsInForeground(_:file:line:)``
 - ``XCAppTest/XCTest/XCUIApplication/assertIsNotInForeground(_:file:line:)``
+- ``XCAppTest/XCTest/XCUIApplication/assertIsInForeground(_:_:file:line:)``
 
 ### Checking number of elements
 

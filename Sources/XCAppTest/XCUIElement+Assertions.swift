@@ -59,6 +59,31 @@ extension XCUIElement {
         return self
     }
 
+    /// Asserts that the current UI element existence matches `exists` parameter.
+    ///
+    /// - Parameters:
+    ///   - exists: Whether the element should exist or not.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertExists(
+        _ exists: Bool,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        assert(
+            named: "Assert \(self) \(exists ? "exists" : "NOT exists")",
+            condition: { $0.exists == exists },
+            message() ?? "\(self) should \(exists ? "exist" : "NOT exist")",
+            file: file,
+            line: line
+        )
+        return self
+    }
+
     // MARK: - Checking interactivity
 
     /// Asserts that the current UI element is hittable.
@@ -107,6 +132,27 @@ extension XCUIElement {
         return self
     }
 
+    /// Asserts that the current UI element's hittable state matches `isHittable` parameter.
+    ///
+    /// - Parameters:
+    ///   - isHittable: Whether the element should be hittable or not.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertIsHittable(
+        _ isHittable: Bool,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        if isHittable {
+            return assertIsHittable(message(), file: file, line: line)
+        }
+        return assertIsNotHittable(message(), file: file, line: line)
+    }
+
     /// Asserts that the current UI element is enabled.
     ///
     /// - Parameters:
@@ -151,6 +197,27 @@ extension XCUIElement {
             line: line
         )
         return self
+    }
+
+    /// Asserts that the current UI element's enabled state matches `isEnabled` parameter.
+    ///
+    /// - Parameters:
+    ///   - isEnabled: Whether the element should be enabled or not.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertIsEnabled(
+        _ isEnabled: Bool,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        if isEnabled {
+            return assertIsEnabled(message(), file: file, line: line)
+        }
+        return assertIsDisabled(message(), file: file, line: line)
     }
 
     /// Asserts that the current UI element exists, is hittable and enabled.
@@ -324,5 +391,26 @@ extension XCUIElement {
             line: line
         )
         return self
+    }
+
+    /// Asserts that the current UI element's selected state matches `isSelected` parameter.
+    ///
+    /// - Parameters:
+    ///   - isSelected: Whether the element should be selected or not.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertIsSelected(
+        _ isSelected: Bool,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        if isSelected {
+            return assertIsSelected(message(), file: file, line: line)
+        }
+        return assertIsNotSelected(message(), file: file, line: line)
     }
 }

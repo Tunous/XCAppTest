@@ -53,6 +53,27 @@ extension XCUIApplication {
         return self
     }
 
+    /// Asserts that the application's foreground state matches `isInForeground` parameter.
+    ///
+    /// - Parameters:
+    ///   - isInForeground: Whether the app should be in foreground or not.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI application element.
+    @discardableResult
+    public func assertIsInForeground(
+        _ isInForeground: Bool,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        if isInForeground {
+            return assertIsInForeground(message(), file: file, line: line)
+        }
+        return assertIsNotInForeground(message(), file: file, line: line)
+    }
+
     // MARK: - Performing actions
 
     #if (os(iOS) || os(tvOS) || os(watchOS)) && !targetEnvironment(macCatalyst)

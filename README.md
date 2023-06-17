@@ -9,11 +9,14 @@ Utilities for easier interaction with XCUITest methods.
         - `assertExists()`
         - `assertExists(waitForAppToIdle: true)`
         - `assertNotExists()`
+        - `assertExists(false)`
     - Checking interactivity of elements:
         - `assertIsHittable()`
         - `assertIsNotHittable()`
+        - `assertIsHittable(false)`
         - `assertIsEnabled()`
         - `assertIsDisabled()`
+        - `assertIsEnabled(false)`
         - `assertIsInteractive()` (exists, isHittable, isEnabled)
     - Checking properties of elements:
         - `assertHasLabel("label")`
@@ -23,6 +26,7 @@ Utilities for easier interaction with XCUITest methods.
     - Checking traits of elements:
         - `assertIsSelected()`
         - `assertIsNotSelected()`
+        - `assertIsSelected(false)`
     - Performing actions:
         - `tapWhenReady()`
         - `waitForInteractivity()`
@@ -35,6 +39,7 @@ Utilities for easier interaction with XCUITest methods.
     - Checking foreground state:
         - `assertIsInForeground()`
         - `assertIsNotInForeground()`
+        - `assertIsInForeground(false)`
     - Performing actions:
         - `moveToBackground()`
 
