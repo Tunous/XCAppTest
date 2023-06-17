@@ -31,6 +31,7 @@ extension XCUIElement {
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI element.
     @discardableResult
+    @available(tvOS, unavailable)
     public func tapWhenReady(
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
@@ -66,6 +67,7 @@ extension XCUIElement {
     /// - Parameter normalizedOffset: The normalized offset.
     /// - Returns: Unmodified UI element.
     @discardableResult
+    @available(tvOS, unavailable)
     public func tap(withNormalizedOffset normalizedOffset: CGVector) -> Self {
         self.coordinate(withNormalizedOffset: normalizedOffset).tap()
         return self
