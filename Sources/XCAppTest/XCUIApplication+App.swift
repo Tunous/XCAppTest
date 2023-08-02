@@ -6,6 +6,12 @@ extension XCUIApplication {
 
     /// Proxy for Safari application.
     public static let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
+    
+    /// Proxy for Springboard.
+    public static let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+
+    /// Proxy for Messages application.
+    public static let messages = XCUIApplication(bundleIdentifier: "com.apple.MobileSMS")
 
     // MARK: - Checking state
 
