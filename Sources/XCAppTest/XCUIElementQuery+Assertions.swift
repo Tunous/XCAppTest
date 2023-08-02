@@ -29,6 +29,30 @@ extension XCUIElementQuery {
         return self
     }
 
+    /// Evaluates the query and asserts that it matches number of elements in given `range`.
+    ///
+    /// - Parameters:
+    ///   - range: The expected range of elements that should match the query.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element query.
+    public func assertHasCount(
+        _ range: some RangeExpression<Int>,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        assert(
+            named: "Assert \(self) matches \(range) elements",
+            condition: { range.contains($0.count) },
+            message() ?? "\(self) should return number of results in range \(range) but returned \(self.count)",
+            file: file,
+            line: line
+        )
+        return self
+    }
+
     /// Evaluates the query and asserts that there are no matching elements.
     ///
     /// - Parameters:
