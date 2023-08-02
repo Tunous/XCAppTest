@@ -1,6 +1,7 @@
 import Foundation
 
 extension CGVector {
+
     /// Normalized offset to view's top left coordinate.
     public static let topLeft: CGVector = CGVector(dx: 0, dy: 0)
 
@@ -27,4 +28,14 @@ extension CGVector {
 
     /// Normalized offset to view's bottom right coordinate.
     public static let bottomRight: CGVector = CGVector(dx: 1, dy: 1)
+    
+    /// Vector with x and y components offset by given values.
+    ///
+    /// - Parameters:
+    ///   - x: Offset to apply to x component.
+    ///   - y: Offset to apply to y component.
+    /// - Returns: Vector with offset x and y components.
+    public func offset(x: CGFloat = 0, y: CGFloat = 0) -> CGVector {
+        return CGVector(dx: dx + x, dy: dy + y)
+    }
 }
