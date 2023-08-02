@@ -72,4 +72,23 @@ extension XCUIElement {
         self.coordinate(withNormalizedOffset: normalizedOffset).tap()
         return self
     }
+
+    /// Initiates a press-and-hold gesture at `startPoint`, then drags to `endPoint`.
+    ///
+    /// - Parameters:
+    ///   - startPoint: The normalized offset of coordinate in this element from which to start the drag gesture.
+    ///   - endPoint: The normalized offset of coordinate in this element to finish the drag gesture over.
+    ///   - pressDuration: The duration of the initial press and hold.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func drag(
+        from startPoint: CGVector,
+        to endPoint: CGVector,
+        pressDuration: TimeInterval = 0
+    ) -> Self {
+        let startCoordinate = coordinate(withNormalizedOffset: startPoint)
+        let endCoordinate = coordinate(withNormalizedOffset: endPoint)
+        startCoordinate.press(forDuration: pressDuration, thenDragTo: endCoordinate)
+        return self
+    }
 }
