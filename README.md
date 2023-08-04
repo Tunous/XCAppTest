@@ -32,10 +32,13 @@ Utilities for easier interaction with XCUITest methods.
         - `waitForInteractivity()`
         - `slowTypeText("text")`
         - `tap(withNormalizedOffset: .center)`
+        - `drag(from: .top, to: .bottom, pressDuration: 1)`
 
 - `XCUIApplication` extensions:
     - Accessing other apps:
         - `XCUIApplication.safari`
+        - `XCUIApplication.springboard`
+        - `XCUIApplication.messages`
     - Checking foreground state:
         - `assertIsInForeground()`
         - `assertIsNotInForeground()`
@@ -47,12 +50,14 @@ Utilities for easier interaction with XCUITest methods.
     - Checking number of elements:
         - `assertHasCount(2)`
         - `assertNotExists()`
+        - `assertHasCount(2...5)`, `assertHasCount(..<3)`
 
 - `CGVector` extensions:
     - Normalized offsets:
-        - `topLeft`, `top`, `topRight`
-        - `left`, `center`, `right`
-        - `bottomLeft`, `bottom`, `bottomRight`
+        - `CGVector.topLeft`, `CGVector.top`, `CGVector.topRight`
+        - `CGVector.left`, `CGVector.center`, `CGVector.right`
+        - `CGVector.bottomLeft`, `CGVector.bottom`, `CGVector.bottomRight`
+        - `offset(x: 0.2, y: 0.5)`
 
 All of the above assertion functions have optional message as last parameter that can be used to configure what is displayed if assertion fails. For example: `element.assertExists("My element should be visible")`.
 For details see [documentation](https://swiftpackageindex.com/Tunous/XCAppTest/main/documentation/xcapptest).

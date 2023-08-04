@@ -63,11 +63,14 @@ func testOpenClosePremiumScreen() throws {
 - ``XCAppTest/XCTest/XCUIElement/waitForInteractivity(_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/slowTypeText(_:)``
 - ``XCAppTest/XCTest/XCUIElement/tap(withNormalizedOffset:)``
+- ``XCAppTest/XCTest/XCUIElement/drag(from:to:pressDuration:)``
 - ``XCAppTest/XCTest/XCUIApplication/moveToBackground(_:)``
 
 ### Accessing other apps
 
 - ``XCAppTest/XCTest/XCUIApplication/safari``
+- ``XCAppTest/XCTest/XCUIApplication/springboard``
+- ``XCAppTest/XCTest/XCUIApplication/messages``
 
 ### Checking foreground state
 
@@ -77,7 +80,8 @@ func testOpenClosePremiumScreen() throws {
 
 ### Checking number of elements
 
-- ``XCAppTest/XCTest/XCUIElementQuery/assertHasCount(_:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElementQuery/assertHasCount(_:_:file:line:)-6ndsd``
+- ``XCAppTest/XCTest/XCUIElementQuery/assertHasCount(_:_:file:line:)-8jvu3``
 
 ### Normalized offsets
 
@@ -90,3 +94,4 @@ func testOpenClosePremiumScreen() throws {
 - ``XCAppTest/CoreGraphics/CGVector/bottomLeft``
 - ``XCAppTest/CoreGraphics/CGVector/bottom``
 - ``XCAppTest/CoreGraphics/CGVector/bottomRight``
+- ``XCAppTest/CoreGraphics/CGVector/offset(x:y:)``
