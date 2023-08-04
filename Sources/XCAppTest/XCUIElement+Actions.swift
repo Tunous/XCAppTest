@@ -81,6 +81,7 @@ extension XCUIElement {
     ///   - pressDuration: The duration of the initial press and hold.
     /// - Returns: Unmodified UI element.
     @discardableResult
+    @available(tvOS, unavailable)
     public func drag(
         from startPoint: CGVector,
         to endPoint: CGVector,
