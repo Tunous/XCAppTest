@@ -62,6 +62,7 @@ extension XCUIElement {
         return self
     }
 
+    #if !os(tvOS)
     /// Taps the element at normalized offset from its origin.
     ///
     /// - Parameter normalizedOffset: The normalized offset.
@@ -92,4 +93,5 @@ extension XCUIElement {
         startCoordinate.press(forDuration: pressDuration, thenDragTo: endCoordinate)
         return self
     }
+    #endif
 }
