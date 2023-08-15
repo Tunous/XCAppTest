@@ -93,5 +93,19 @@ extension XCUIElement {
         startCoordinate.press(forDuration: pressDuration, thenDragTo: endCoordinate)
         return self
     }
+    
+    /// Sends a long press gesture to a hittable point computed for the element at normalized offset from its origin,
+    /// holding for the specified duration.
+    ///
+    /// - Parameters:
+    ///   - duration: Duration in seconds.
+    ///   - normalizedOffset: The normalized offset.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    @available(tvOS, unavailable)
+    public func press(forDuration duration: TimeInterval, withNormalizedOffset normalizedOffset: CGVector) -> Self {
+        self.coordinate(withNormalizedOffset: normalizedOffset).press(forDuration: duration)
+        return self
+    }
     #endif
 }

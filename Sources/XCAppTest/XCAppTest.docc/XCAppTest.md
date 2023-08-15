@@ -64,6 +64,7 @@ func testOpenClosePremiumScreen() throws {
 - ``XCAppTest/XCTest/XCUIElement/slowTypeText(_:)``
 - ``XCAppTest/XCTest/XCUIElement/tap(withNormalizedOffset:)``
 - ``XCAppTest/XCTest/XCUIElement/drag(from:to:pressDuration:)``
+- ``XCAppTest/XCTest/XCUIElement/press(forDuration:withNormalizedOffset:)``
 - ``XCAppTest/XCTest/XCUIApplication/moveToBackground(_:)``
 
 ### Accessing other apps

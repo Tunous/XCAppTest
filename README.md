@@ -35,6 +35,7 @@ Utilities for easier interaction with XCUITest methods.
         - `slowTypeText("text")`
         - `tap(withNormalizedOffset: .center)`
         - `drag(from: .top, to: .bottom, pressDuration: 1)`
+        - `press(forDuration: 1, withNormalizedOffset: .center)`
 
 - `XCUIApplication` extensions:
     - Accessing other apps:
