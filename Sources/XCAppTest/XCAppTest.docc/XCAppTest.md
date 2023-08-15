@@ -50,6 +50,7 @@ func testOpenClosePremiumScreen() throws {
 - ``XCAppTest/XCTest/XCUIElement/assertContainsText(_:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertHasValue(_:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertHasPlaceholder(_:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsEmpty(_:file:line:)``
 
 ### Checking traits of elements
 
@@ -66,6 +67,10 @@ func testOpenClosePremiumScreen() throws {
 - ``XCAppTest/XCTest/XCUIElement/drag(from:to:pressDuration:)``
 - ``XCAppTest/XCTest/XCUIElement/press(forDuration:withNormalizedOffset:)``
 - ``XCAppTest/XCTest/XCUIApplication/moveToBackground(_:)``
+
+### Accessing properties of elements
+
+- ``XCAppTest/XCTest/XCUIElement/stringValue``
 
 ### Accessing other apps
 
@@ -86,13 +91,13 @@ func testOpenClosePremiumScreen() throws {
 
 ### Normalized offsets
 
-- ``XCAppTest/CoreGraphics/CGVector/topLeft``
-- ``XCAppTest/CoreGraphics/CGVector/top``
-- ``XCAppTest/CoreGraphics/CGVector/topRight``
-- ``XCAppTest/CoreGraphics/CGVector/left``
-- ``XCAppTest/CoreGraphics/CGVector/center``
-- ``XCAppTest/CoreGraphics/CGVector/right``
-- ``XCAppTest/CoreGraphics/CGVector/bottomLeft``
-- ``XCAppTest/CoreGraphics/CGVector/bottom``
-- ``XCAppTest/CoreGraphics/CGVector/bottomRight``
-- ``XCAppTest/CoreGraphics/CGVector/offset(x:y:)``
+- ``CoreGraphics/CGVector/topLeft``
+- ``CoreGraphics/CGVector/top``
+- ``CoreGraphics/CGVector/topRight``
+- ``CoreGraphics/CGVector/left``
+- ``CoreGraphics/CGVector/center``
+- ``CoreGraphics/CGVector/right``
+- ``CoreGraphics/CGVector/bottomLeft``
+- ``CoreGraphics/CGVector/bottom``
+- ``CoreGraphics/CGVector/bottomRight``
+- ``CoreGraphics/CGVector/offset(x:y:)``

@@ -25,6 +25,7 @@ Utilities for easier interaction with XCUITest methods.
         - `assertContainsText("label")`
         - `assertHasValue("equatable value")`
         - `assertHasPlaceholder("placeholder")`
+        - `assertIsEmpty()` (value == placeholderValue)
     - Checking traits of elements:
         - `assertIsSelected()`
         - `assertIsNotSelected()`
@@ -36,6 +37,8 @@ Utilities for easier interaction with XCUITest methods.
         - `tap(withNormalizedOffset: .center)`
         - `drag(from: .top, to: .bottom, pressDuration: 1)`
         - `press(forDuration: 1, withNormalizedOffset: .center)`
+    - Accessing properties of elements:
+        - `stringValue`
 
 - `XCUIApplication` extensions:
     - Accessing other apps:

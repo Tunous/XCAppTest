@@ -345,6 +345,29 @@ extension XCUIElement {
         return self
     }
 
+    /// Asserts that the current UI element has its value equal to its placeholder.
+    ///
+    /// - Parameters:
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertIsEmpty(
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        assert(
+            named: "Assert \(self) is empty",
+            condition: { $0.stringValue == $0.placeholderValue },
+            message() ?? "\(self) is not empty. Expected value '\(String(describing: self.value))' to be equal to placeholder value '\(String(describing: self.placeholderValue))'",
+            file: file,
+            line: line
+        )
+        return self
+    }
+
     // MARK: - Checking traits
 
     /// Asserts that the current UI element is selected.
