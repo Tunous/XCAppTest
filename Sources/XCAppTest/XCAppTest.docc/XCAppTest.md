@@ -66,6 +66,7 @@ func testOpenClosePremiumScreen() throws {
 - ``XCAppTest/XCTest/XCUIElement/tap(withNormalizedOffset:)``
 - ``XCAppTest/XCTest/XCUIElement/drag(from:to:pressDuration:)``
 - ``XCAppTest/XCTest/XCUIElement/press(forDuration:withNormalizedOffset:)``
+- ``XCAppTest/XCTest/XCUIElement/pressWhenReady(forDuration:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIApplication/moveToBackground(_:)``
 
 ### Accessing properties of elements

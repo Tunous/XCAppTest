@@ -37,6 +37,7 @@ Utilities for easier interaction with XCUITest methods.
         - `tap(withNormalizedOffset: .center)`
         - `drag(from: .top, to: .bottom, pressDuration: 1)`
         - `press(forDuration: 1, withNormalizedOffset: .center)`
+        - `pressWhenReady(forDuration: 2)`
     - Accessing properties of elements:
         - `stringValue`
 

@@ -107,5 +107,28 @@ extension XCUIElement {
         self.coordinate(withNormalizedOffset: normalizedOffset).press(forDuration: duration)
         return self
     }
+
+    /// Waits for the element to exist, then long presses on it, holding for the specified `duration`.
+    ///
+    /// - Parameters:
+    ///   - duration: Duration in seconds.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    @available(tvOS, unavailable)
+    public func pressWhenReady(
+        forDuration duration: TimeInterval,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        XCTContext.runActivity(named: "Press \(self) for \(duration) seconds when ready") { _ in
+            assertExists(waitForAppToIdle: true, message() ?? "\(self) should exists to press on it.", file: file, line: line)
+            press(forDuration: duration)
+        }
+        return self
+    }
     #endif
 }
