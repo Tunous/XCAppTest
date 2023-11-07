@@ -68,7 +68,6 @@ extension XCUIElement {
     /// - Parameter normalizedOffset: The normalized offset.
     /// - Returns: Unmodified UI element.
     @discardableResult
-    @available(tvOS, unavailable)
     public func tap(withNormalizedOffset normalizedOffset: CGVector) -> Self {
         self.coordinate(withNormalizedOffset: normalizedOffset).tap()
         return self
@@ -82,7 +81,6 @@ extension XCUIElement {
     ///   - pressDuration: The duration of the initial press and hold.
     /// - Returns: Unmodified UI element.
     @discardableResult
-    @available(tvOS, unavailable)
     public func drag(
         from startPoint: CGVector,
         to endPoint: CGVector,
@@ -102,7 +100,6 @@ extension XCUIElement {
     ///   - normalizedOffset: The normalized offset.
     /// - Returns: Unmodified UI element.
     @discardableResult
-    @available(tvOS, unavailable)
     public func press(forDuration duration: TimeInterval, withNormalizedOffset normalizedOffset: CGVector) -> Self {
         self.coordinate(withNormalizedOffset: normalizedOffset).press(forDuration: duration)
         return self
@@ -117,7 +114,6 @@ extension XCUIElement {
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI element.
     @discardableResult
-    @available(tvOS, unavailable)
     public func pressWhenReady(
         forDuration duration: TimeInterval,
         _ message: @autoclosure () -> String? = nil,
