@@ -73,8 +73,9 @@ func testOpenClosePremiumScreen() throws {
 
 - ``XCAppTest/XCTest/XCUIElement/stringValue``
 
-### Accessing other apps
+### Accessing elements and other apps
 
+- ``XCAppTest/XCTest/XCUIElementQuery/lastMatch``
 - ``XCAppTest/XCTest/XCUIApplication/safari``
 - ``XCAppTest/XCTest/XCUIApplication/springboard``
 - ``XCAppTest/XCTest/XCUIApplication/messages``

@@ -58,6 +58,8 @@ Utilities for easier interaction with XCUITest methods.
         - `assertHasCount(2)`
         - `assertNotExists()`
         - `assertHasCount(2...5)`, `assertHasCount(..<3)`
+    - Accessing elements:
+        - `lastMatch`
 
 - `CGVector` extensions:
     - Normalized offsets:
