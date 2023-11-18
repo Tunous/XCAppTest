@@ -6,19 +6,32 @@ extension XCUIElement {
     /// Waits for the element to exist, be hittable and enabled.
     ///
     /// - Parameters:
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI element.
     @discardableResult
     public func waitForInteractivity(
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
         XCTContext.runActivity(named: "Wait for \(self) to be interactive") { _ in
-            assertExists(waitForAppToIdle: true, message() ?? "\(self) should exist to be interactive.", file: file, line: line)
-            assertIsInteractive(message(), file: file, line: line)
+            assertExists(
+                waitForAppToIdle: true,
+                timeout: timeout,
+                message() ?? "\(self) should exist to be interactive.",
+                file: file,
+                line: line
+            )
+            assertIsInteractive(
+                timeout: timeout,
+                message(),
+                file: file,
+                line: line
+            )
         }
         return self
     }
@@ -26,6 +39,7 @@ extension XCUIElement {
     /// Waits for the element to exist, then taps on it.
     ///
     /// - Parameters:
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
@@ -33,12 +47,19 @@ extension XCUIElement {
     @discardableResult
     @available(tvOS, unavailable)
     public func tapWhenReady(
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
         XCTContext.runActivity(named: "Tap \(self) when ready") { _ in
-            assertExists(waitForAppToIdle: true, message() ?? "\(self) should exists to tap on it.", file: file, line: line)
+            assertExists(
+                waitForAppToIdle: true,
+                timeout: timeout,
+                message() ?? "\(self) should exists to tap on it.",
+                file: file,
+                line: line
+            )
             tap()
         }
         return self
@@ -109,6 +130,7 @@ extension XCUIElement {
     ///
     /// - Parameters:
     ///   - duration: Duration in seconds.
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
@@ -116,12 +138,19 @@ extension XCUIElement {
     @discardableResult
     public func pressWhenReady(
         forDuration duration: TimeInterval,
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
         XCTContext.runActivity(named: "Press \(self) for \(duration) seconds when ready") { _ in
-            assertExists(waitForAppToIdle: true, message() ?? "\(self) should exists to press on it.", file: file, line: line)
+            assertExists(
+                waitForAppToIdle: true,
+                timeout: timeout,
+                message() ?? "\(self) should exists to press on it.",
+                file: file,
+                line: line
+            )
             press(forDuration: duration)
         }
         return self

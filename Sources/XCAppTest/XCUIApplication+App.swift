@@ -18,18 +18,20 @@ extension XCUIApplication {
     /// Asserts that the application is currently in foreground.
     ///
     /// - Parameters:
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI application element.
     @discardableResult
     public func assertIsInForeground(
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
         XCTContext.runActivity(named: "Assert \(self) is in foreground") { _ in
-            XCTAssertTrue(wait(for: .runningForeground, timeout: 8), message() ?? "\(self) should be in foreground", file: file, line: line)
+            XCTAssertTrue(wait(for: .runningForeground, timeout: timeout), message() ?? "\(self) should be in foreground", file: file, line: line)
         }
         return self
     }
@@ -37,12 +39,14 @@ extension XCUIApplication {
     /// Asserts that the application is not currently in foreground.
     ///
     /// - Parameters:
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI application element.
     @discardableResult
     public func assertIsNotInForeground(
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
@@ -51,6 +55,7 @@ extension XCUIApplication {
             XCAppTest.assert(
                 condition: { $0.state != .runningForeground },
                 on: self,
+                timeout: timeout,
                 message: { message() ?? "\(self) should not be in foreground" },
                 file: file,
                 line: line
@@ -63,6 +68,7 @@ extension XCUIApplication {
     ///
     /// - Parameters:
     ///   - isInForeground: Whether the app should be in foreground or not.
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
     ///   - message: An optional description of a failure.
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
@@ -70,14 +76,15 @@ extension XCUIApplication {
     @discardableResult
     public func assertIsInForeground(
         _ isInForeground: Bool,
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
         _ message: @autoclosure () -> String? = nil,
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
         if isInForeground {
-            return assertIsInForeground(message(), file: file, line: line)
+            return assertIsInForeground(timeout: timeout, message(), file: file, line: line)
         }
-        return assertIsNotInForeground(message(), file: file, line: line)
+        return assertIsNotInForeground(timeout: timeout, message(), file: file, line: line)
     }
 
     // MARK: - Performing actions

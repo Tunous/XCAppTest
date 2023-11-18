@@ -2,11 +2,11 @@
 
 Utilities for easier interaction with XCUITest methods
 
-## Example
+XCAppTests builds upon default XCUITest capabilities by introducing helper assertion methods and extensions. It allows you to create readable tests that are easy to write and offer detailed failure descriptions when tests fail.
 
 Here is a short example from one of my apps that makes use of this library. In the test I am checking that it is possible to navigate to "Premium features" screen, verify that most important data is visible and check that it is possible to leave that screen.
 
-Note that some of the buttons are identified by enum case instead of raw string. You can see type safe identifiers tip below to see how this is implemented.
+Note that some of the buttons are identified by enum case instead of raw string. You can see <doc:Tips> section to see how this is implemented.
 
 ```swift
 func testOpenClosePremiumScreen() throws {
@@ -23,50 +23,72 @@ func testOpenClosePremiumScreen() throws {
 }
 ```
 
+## Customization
+
+### Failure messages
+
+All of the assertion functions have optional message as last parameter that can be used to configure what is displayed if assertion fails.
+
+```swift
+element.assertExists("My element should be visible")
+```
+
+### Timeouts
+
+You can configure assertion timeout globally by modifying `XCAppTestTimeout.default` property or per call via `timeout` parameter.
+
+```swift
+XCAppTestTimeout.default = 3
+
+element.assertExists(timeout: 3)
+```
+
 ## Topics
 
-- <doc:Tips>
+### Tips
+
+- <doc:TypeSafeIdentifiers>
 
 ### Checking existence of elements
 
-- ``XCAppTest/XCTest/XCUIElement/assertExists(waitForAppToIdle:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertNotExists(_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertExists(_:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElementQuery/assertNotExists(_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertExists(waitForAppToIdle:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertNotExists(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertExists(_:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElementQuery/assertNotExists(timeout:_:file:line:)``
 
 ### Checking interactivity of elements
 
-- ``XCAppTest/XCTest/XCUIElement/assertIsHittable(_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsNotHittable(_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsHittable(_:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsEnabled(_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsDisabled(_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsEnabled(_:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsInteractive(_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsHittable(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsNotHittable(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsHittable(_:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsEnabled(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsDisabled(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsEnabled(_:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsInteractive(timeout:_:file:line:)``
 
 ### Checking properties of elements
 
-- ``XCAppTest/XCTest/XCUIElement/assertHasLabel(_:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertContainsText(_:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertHasValue(_:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertHasPlaceholder(_:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsEmpty(_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertHasLabel(_:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertContainsText(_:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertHasValue(_:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertHasPlaceholder(_:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsEmpty(timeout:_:file:line:)``
 
 ### Checking traits of elements
 
-- ``XCAppTest/XCTest/XCUIElement/assertIsSelected(_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsNotSelected(_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsSelected(_:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsSelected(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsNotSelected(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertIsSelected(_:timeout:_:file:line:)``
 
 ### Performing actions
 
-- ``XCAppTest/XCTest/XCUIElement/tapWhenReady(_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/waitForInteractivity(_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/tapWhenReady(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/waitForInteractivity(timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/slowTypeText(_:)``
 - ``XCAppTest/XCTest/XCUIElement/tap(withNormalizedOffset:)``
 - ``XCAppTest/XCTest/XCUIElement/drag(from:to:pressDuration:)``
 - ``XCAppTest/XCTest/XCUIElement/press(forDuration:withNormalizedOffset:)``
-- ``XCAppTest/XCTest/XCUIElement/pressWhenReady(forDuration:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/pressWhenReady(forDuration:timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIApplication/moveToBackground(_:)``
 
 ### Accessing properties of elements
@@ -82,24 +104,29 @@ func testOpenClosePremiumScreen() throws {
 
 ### Checking foreground state
 
-- ``XCAppTest/XCTest/XCUIApplication/assertIsInForeground(_:file:line:)``
-- ``XCAppTest/XCTest/XCUIApplication/assertIsNotInForeground(_:file:line:)``
-- ``XCAppTest/XCTest/XCUIApplication/assertIsInForeground(_:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIApplication/assertIsInForeground(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIApplication/assertIsNotInForeground(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIApplication/assertIsInForeground(_:timeout:_:file:line:)``
 
 ### Checking number of elements
 
-- ``XCAppTest/XCTest/XCUIElementQuery/assertHasCount(_:_:file:line:)-6ndsd``
-- ``XCAppTest/XCTest/XCUIElementQuery/assertHasCount(_:_:file:line:)-8jvu3``
+- ``XCAppTest/XCTest/XCUIElementQuery/assertHasCount(_:timeout:_:file:line:)-6w6h2``
+- ``XCAppTest/XCTest/XCUIElementQuery/assertHasCount(_:timeout:_:file:line:)-1745l``
+
+### Configuration
+
+- ``XCAppTest/XCAppTestConfig``
+- ``XCAppTest/XCAppTestConfig/defaultTimeout``
 
 ### Normalized offsets
 
-- ``CoreGraphics/CGVector/topLeft``
-- ``CoreGraphics/CGVector/top``
-- ``CoreGraphics/CGVector/topRight``
-- ``CoreGraphics/CGVector/left``
-- ``CoreGraphics/CGVector/center``
-- ``CoreGraphics/CGVector/right``
-- ``CoreGraphics/CGVector/bottomLeft``
-- ``CoreGraphics/CGVector/bottom``
-- ``CoreGraphics/CGVector/bottomRight``
-- ``CoreGraphics/CGVector/offset(x:y:)``
+- ``CoreFoundation/CGVector/topLeft``
+- ``CoreFoundation/CGVector/top``
+- ``CoreFoundation/CGVector/topRight``
+- ``CoreFoundation/CGVector/left``
+- ``CoreFoundation/CGVector/center``
+- ``CoreFoundation/CGVector/right``
+- ``CoreFoundation/CGVector/bottomLeft``
+- ``CoreFoundation/CGVector/bottom``
+- ``CoreFoundation/CGVector/bottomRight``
+- ``CoreFoundation/CGVector/offset(x:y:)``

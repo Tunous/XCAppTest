@@ -1,6 +1,6 @@
-# Tips
+# Type safe identifiers
 
-## Type safe identifiers
+Introduce type safety to element identifiers.
 
 To make interaction with elements easier, you can introduce a helper enum that will act as a type safe accessibility identifier. That way you will avoid typos when trying to match user interface elements from your tests.
 

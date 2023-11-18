@@ -69,6 +69,7 @@ Utilities for easier interaction with XCUITest methods.
         - `offset(x: 0.2, y: 0.5)`
 
 All of the above assertion functions have optional message as last parameter that can be used to configure what is displayed if assertion fails. For example: `element.assertExists("My element should be visible")`.
+Additionally you can configure assertion timeout globally by modifying `XCAppTestTimeout.default` or per call via `timeout` parameter. For example: `XCAppTestTimeout.default = 3`, `element.assertExists(timeout: 3)`.
 For details see [documentation](https://swiftpackageindex.com/Tunous/XCAppTest/main/documentation/xcapptest).
 
 ## Example
