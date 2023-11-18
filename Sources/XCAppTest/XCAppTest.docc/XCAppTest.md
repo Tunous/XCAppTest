@@ -73,6 +73,7 @@ element.assertExists(timeout: 3)
 - ``XCAppTest/XCTest/XCUIElement/assertHasValue(_:timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertHasPlaceholder(_:timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertIsEmpty(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertHasTitle(_:timeout:_:file:line:)``
 
 ### Checking traits of elements
 

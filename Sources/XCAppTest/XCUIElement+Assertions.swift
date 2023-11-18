@@ -410,6 +410,34 @@ extension XCUIElement {
         return self
     }
 
+    /// Asserts that the current UI element has title equal to given value.
+    ///
+    /// - Parameters:
+    ///   - title: The expected title attribute of the element.
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertHasTitle(
+        _ title: String,
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        assert(
+            named: "Assert \(self) has title '\(title)'",
+            condition: { $0.title == title },
+            timeout: timeout,
+            message() ?? "\(self) has incorrect title. Expected: '\(title)' but found: '\(self.title)'",
+            file: file,
+            line: line
+        )
+        return self
+    }
+
     // MARK: - Checking traits
 
     /// Asserts that the current UI element is selected.

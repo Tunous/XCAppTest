@@ -26,6 +26,7 @@ Utilities for easier interaction with XCUITest methods.
         - `assertHasValue("equatable value")`
         - `assertHasPlaceholder("placeholder")`
         - `assertIsEmpty()` (value == placeholderValue)
+        - `assertHasTitle("title")`
     - Checking traits of elements:
         - `assertIsSelected()`
         - `assertIsNotSelected()`
