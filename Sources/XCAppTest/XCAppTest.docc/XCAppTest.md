@@ -100,6 +100,7 @@ element.assertExists(timeout: 3)
 
 - ``XCAppTest/XCTest/XCUIElementQuery/lastMatch``
 - ``XCAppTest/XCTest/XCUIElementQuery/subscript(_:)``
+- ``XCAppTest/XCTest/XCUIElementQuery/first(where:)``
 - ``XCAppTest/XCTest/XCUIApplication/safari``
 - ``XCAppTest/XCTest/XCUIApplication/springboard``
 - ``XCAppTest/XCTest/XCUIApplication/messages``

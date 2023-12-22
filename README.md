@@ -62,6 +62,7 @@ Utilities for easier interaction with XCUITest methods.
     - Accessing elements:
         - `lastMatch`
         - `self[2]`
+        - `first(where: { $0.label == "a" })`
 
 - `CGVector` extensions:
     - Normalized offsets:
