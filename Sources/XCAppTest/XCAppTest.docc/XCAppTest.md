@@ -6,7 +6,7 @@ XCAppTests builds upon default XCUITest capabilities by introducing helper asser
 
 Here is a short example from one of my apps that makes use of this library. In the test I am checking that it is possible to navigate to "Premium features" screen, verify that most important data is visible and check that it is possible to leave that screen.
 
-Note that some of the buttons are identified by enum case instead of raw string. You can see <doc:Tips> section to see how this is implemented.
+Note that some of the buttons are identified by enum case instead of raw string. You can see <doc:TypeSafeIdentifiers> section to see how this is implemented.
 
 ```swift
 func testOpenClosePremiumScreen() throws {
@@ -39,7 +39,6 @@ You can configure assertion timeout globally by modifying `XCAppTestTimeout.defa
 
 ```swift
 XCAppTestTimeout.default = 3
-
 element.assertExists(timeout: 3)
 ```
 
@@ -101,6 +100,7 @@ element.assertExists(timeout: 3)
 - ``XCAppTest/XCTest/XCUIElementQuery/lastMatch``
 - ``XCAppTest/XCTest/XCUIElementQuery/subscript(_:)``
 - ``XCAppTest/XCTest/XCUIElementQuery/first(where:)``
+- ``XCAppTest/XCTest/XCUIElementQuery/bannerNotifications``
 - ``XCAppTest/XCTest/XCUIApplication/safari``
 - ``XCAppTest/XCTest/XCUIApplication/springboard``
 - ``XCAppTest/XCTest/XCUIApplication/messages``

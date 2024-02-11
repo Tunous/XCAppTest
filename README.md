@@ -63,6 +63,7 @@ Utilities for easier interaction with XCUITest methods.
         - `lastMatch`
         - `self[2]`
         - `first(where: { $0.label == "a" })`
+        - `bannerNotifications`
 
 - `CGVector` extensions:
     - Normalized offsets:
@@ -70,6 +71,9 @@ Utilities for easier interaction with XCUITest methods.
         - `CGVector.left`, `CGVector.center`, `CGVector.right`
         - `CGVector.bottomLeft`, `CGVector.bottom`, `CGVector.bottomRight`
         - `offset(x: 0.2, y: 0.5)`
+        
+- `XCUIElement.ElementType` extensions:
+    - `bannerNotification`
 
 All of the above assertion functions have optional message as last parameter that can be used to configure what is displayed if assertion fails. For example: `element.assertExists("My element should be visible")`.
 Additionally you can configure assertion timeout globally by modifying `XCAppTestTimeout.default` or per call via `timeout` parameter. For example: `XCAppTestTimeout.default = 3`, `element.assertExists(timeout: 3)`.
