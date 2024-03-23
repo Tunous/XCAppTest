@@ -74,6 +74,10 @@ Utilities for easier interaction with XCUITest methods.
         
 - `XCUIElement.ElementType` extensions:
     - `bannerNotification`
+    
+- `XCTestCase` extensions:
+    - `run { ... }`
+    - `run("Activity name") { ... }`
 
 All of the above assertion functions have optional message as last parameter that can be used to configure what is displayed if assertion fails. For example: `element.assertExists("My element should be visible")`.
 Additionally you can configure assertion timeout globally by modifying `XCAppTestTimeout.default` or per call via `timeout` parameter. For example: `XCAppTestTimeout.default = 3`, `element.assertExists(timeout: 3)`.
@@ -91,9 +95,12 @@ func testOpenClosePremiumScreen() throws {
 
     app.buttons[.toggleBottomSheetButton].tap()
     app.buttons["Unlock Premium"].tapWhenReady()
-    assertPremiumScreenIsVisible()
-    app.buttons[.unlockFeaturesButton].assertIsEnabled().assertContainsText("Lifetime access")
-    app.buttons["Restore Purchase"].assertIsEnabled()
+    
+    run("Verify screen content") {
+        assertPremiumScreenIsVisible()
+        app.buttons[.unlockFeaturesButton].assertIsEnabled().assertContainsText("Lifetime access")
+        app.buttons["Restore Purchase"].assertIsEnabled()
+    }
 
     app.buttons["Dismiss"].tap()
     app.staticTexts["Pipilo Premium"].assertNotExists()

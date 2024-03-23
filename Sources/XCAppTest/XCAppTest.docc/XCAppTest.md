@@ -14,9 +14,12 @@ func testOpenClosePremiumScreen() throws {
 
     app.buttons[.toggleBottomSheetButton].tap()
     app.buttons["Unlock Premium"].tapWhenReady()
-    assertPremiumScreenIsVisible()
-    app.buttons[.unlockFeaturesButton].assertIsEnabled().assertContainsText("Lifetime access")
-    app.buttons["Restore Purchase"].assertIsEnabled()
+
+    run("Verify screen content") {
+        assertPremiumScreenIsVisible()
+        app.buttons[.unlockFeaturesButton].assertIsEnabled().assertContainsText("Lifetime access")
+        app.buttons["Restore Purchase"].assertIsEnabled()
+    }
 
     app.buttons["Dismiss"].tap()
     app.staticTexts["Pipilo Premium"].assertNotExists()
@@ -133,3 +136,7 @@ element.assertExists(timeout: 3)
 - ``CoreFoundation/CGVector/bottom``
 - ``CoreFoundation/CGVector/bottomRight``
 - ``CoreFoundation/CGVector/offset(x:y:)``
+
+### Running activities
+
+- ``XCAppTest/XCTest/XCTestCase/run(_:function:block:)``
