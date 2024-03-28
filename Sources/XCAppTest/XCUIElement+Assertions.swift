@@ -328,7 +328,7 @@ extension XCUIElement {
         return self
     }
 
-    /// Asserts that the current UI element raw attribute value equal to `expectedValue`.
+    /// Asserts that the current UI element's raw attribute value is equal to `expectedValue`.
     ///
     /// - Parameters:
     ///   - expectedValue: The expected value attribute of the element.
@@ -354,6 +354,44 @@ extension XCUIElement {
             line: line
         )
         return self
+    }
+
+    /// Asserts that the current UI element's raw attribute value corresponds to given on/off state.
+    ///
+    /// - Parameters:
+    ///   - isOn: The expected on/off state of the element.
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertIsOn(
+        _ isOn: Bool = true,
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        return assertHasValue(isOn ? "1" : "0", timeout: timeout, message(), file: file, line: line)
+    }
+
+    /// Asserts that the current UI element's raw attribute value corresponds to off state.
+    ///
+    /// - Parameters:
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func assertIsOff(
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        return assertIsOn(false, timeout: timeout, message(), file: file, line: line)
     }
 
     /// Asserts that the current UI element has placeholder value equal to `expectedPlaceholder`.
