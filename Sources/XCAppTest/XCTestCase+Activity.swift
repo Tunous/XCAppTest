@@ -18,6 +18,7 @@ extension XCTestCase {
     /// - Returns: Whatever is returned by block.
     /// - Throws: Whatever is thrown by block.
     @MainActor
+    @discardableResult
     public func run<Result>(
         _ name: String? = nil,
         function: StaticString = #function,
