@@ -109,6 +109,7 @@ element.assertExists(timeout: 3)
 - ``XCAppTest/XCTest/XCUIApplication/safari``
 - ``XCAppTest/XCTest/XCUIApplication/springboard``
 - ``XCAppTest/XCTest/XCUIApplication/messages``
+- ``XCAppTest/XCTest/XCUIApplication/settings``
 
 ### Checking foreground state
 

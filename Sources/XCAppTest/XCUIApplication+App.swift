@@ -13,6 +13,9 @@ extension XCUIApplication {
     /// Proxy for Messages application.
     public static let messages = XCUIApplication(bundleIdentifier: "com.apple.MobileSMS")
 
+    /// Proxy for Settings application.
+    public static let settings = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
+
     // MARK: - Checking state
 
     /// Asserts that the application is currently in foreground.

@@ -50,6 +50,7 @@ Utilities for easier interaction with XCUITest methods.
         - `XCUIApplication.safari`
         - `XCUIApplication.springboard`
         - `XCUIApplication.messages`
+        - `XCUIApplication.settings`
     - Checking foreground state:
         - `assertIsInForeground()`
         - `assertIsNotInForeground()`
