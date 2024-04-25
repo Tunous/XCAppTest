@@ -91,7 +91,7 @@ For details see [documentation](https://swiftpackageindex.com/Tunous/XCAppTest/m
 
 Here is a short example from one of my apps that makes use of this library. In the test I am checking that it is possible to navigate to "Premium features" screen, verify that most important data is visible and check that it is possible to leave that screen.
 
-Note that some of the buttons are identified by enum case instead of raw string. You can see [type safe identifiers](#type-safe-identifiers) tip below to see how this is implemented.
+Note that some of the buttons are identified by enum case instead of raw string. You can see [type safe identifiers](https://swiftpackageindex.com/tunous/xcapptest/main/documentation/xcapptest/typesafeidentifiers) tip to see how this is implemented.
 
 ```swift
 func testOpenClosePremiumScreen() throws {
