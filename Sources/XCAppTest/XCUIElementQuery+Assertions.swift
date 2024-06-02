@@ -41,6 +41,7 @@ extension XCUIElementQuery {
     ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
     ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
     /// - Returns: Unmodified UI element query.
+    @discardableResult
     public func assertHasCount(
         _ range: some RangeExpression<Int>,
         timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
