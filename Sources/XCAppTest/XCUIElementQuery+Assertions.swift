@@ -83,4 +83,28 @@ extension XCUIElementQuery {
             line: line
         )
     }
+
+    /// Evaluates the query and asserts that there is at least one matching element.
+    ///
+    /// - Parameters:
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element query.
+    @discardableResult
+    public func assertExists(
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        return assertHasCount(
+            1...,
+            timeout: timeout,
+            message() ?? "\(self) should return at least one result but returned \(self.count)",
+            file: file,
+            line: line
+        )
+    }
 }

@@ -57,6 +57,7 @@ element.assertExists(timeout: 3)
 - ``XCAppTest/XCTest/XCUIElement/assertNotExists(timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertExists(_:timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElementQuery/assertNotExists(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElementQuery/assertExists(timeout:_:file:line:)``
 
 ### Checking interactivity of elements
 
