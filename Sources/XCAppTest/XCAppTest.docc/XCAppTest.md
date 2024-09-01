@@ -38,10 +38,10 @@ element.assertExists("My element should be visible")
 
 ### Timeouts
 
-You can configure assertion timeout globally by modifying `XCAppTestTimeout.default` property or per call via `timeout` parameter.
+You can configure assertion timeout globally by modifying ``XCAppTestConfig/defaultTimeout`` property or per call via `timeout` parameter.
 
 ```swift
-XCAppTestTimeout.default = 3
+XCAppTestConfig.defaultTimeout = 3
 element.assertExists(timeout: 3)
 ```
 
@@ -95,6 +95,7 @@ element.assertExists(timeout: 3)
 - ``XCAppTest/XCTest/XCUIElement/drag(from:to:pressDuration:)``
 - ``XCAppTest/XCTest/XCUIElement/press(forDuration:withNormalizedOffset:)``
 - ``XCAppTest/XCTest/XCUIElement/pressWhenReady(forDuration:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/tapIfExists(timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIApplication/moveToBackground(_:)``
 
 ### Accessing properties of elements
@@ -107,6 +108,8 @@ element.assertExists(timeout: 3)
 - ``XCAppTest/XCTest/XCUIElementQuery/subscript(_:)``
 - ``XCAppTest/XCTest/XCUIElementQuery/first(where:)``
 - ``XCAppTest/XCTest/XCUIElementQuery/bannerNotifications``
+- ``XCAppTest/XCTest/XCUIElement/bannerNotifications``
+- ``XCAppTest/XCTest/XCUIElement/ElementType/bannerNotification``
 - ``XCAppTest/XCTest/XCUIApplication/safari``
 - ``XCAppTest/XCTest/XCUIApplication/springboard``
 - ``XCAppTest/XCTest/XCUIApplication/messages``

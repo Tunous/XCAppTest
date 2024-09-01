@@ -42,6 +42,7 @@ Utilities for easier interaction with XCUITest methods.
         - `drag(from: .top, to: .bottom, pressDuration: 1)`
         - `press(forDuration: 1, withNormalizedOffset: .center)`
         - `pressWhenReady(forDuration: 2)`
+        - `tapIfExists()`
     - Accessing properties of elements:
         - `stringValue`
 
