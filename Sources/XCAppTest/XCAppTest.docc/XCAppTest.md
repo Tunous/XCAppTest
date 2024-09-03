@@ -102,7 +102,7 @@ element.assertExists(timeout: 3)
 
 - ``XCAppTest/XCTest/XCUIElement/stringValue``
 
-### Accessing elements and other apps
+### Accessing elements
 
 - ``XCAppTest/XCTest/XCUIElementQuery/lastMatch``
 - ``XCAppTest/XCTest/XCUIElementQuery/subscript(_:)``
@@ -110,6 +110,9 @@ element.assertExists(timeout: 3)
 - ``XCAppTest/XCTest/XCUIElementQuery/bannerNotifications``
 - ``XCAppTest/XCTest/XCUIElement/bannerNotifications``
 - ``XCAppTest/XCTest/XCUIElement/ElementType/bannerNotification``
+
+### Accessing other apps
+
 - ``XCAppTest/XCTest/XCUIApplication/safari``
 - ``XCAppTest/XCTest/XCUIApplication/springboard``
 - ``XCAppTest/XCTest/XCUIApplication/messages``
@@ -121,10 +124,11 @@ element.assertExists(timeout: 3)
 - ``XCAppTest/XCTest/XCUIApplication/assertIsNotInForeground(timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIApplication/assertIsInForeground(_:timeout:_:file:line:)``
 
-### Checking number of elements
+### Asserting multiple elements
 
 - ``XCAppTest/XCTest/XCUIElementQuery/assertHasCount(_:timeout:_:file:line:)-6w6h2``
 - ``XCAppTest/XCTest/XCUIElementQuery/assertHasCount(_:timeout:_:file:line:)-1745l``
+- ``XCAppTest/XCTest/XCUIElementQuery/assertMatchedElements(perform:)``
 
 ### Configuration
 

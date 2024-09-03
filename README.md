@@ -70,6 +70,8 @@ Utilities for easier interaction with XCUITest methods.
         - `self[2]`
         - `first(where: { $0.label == "a" })`
         - `bannerNotifications`
+    - Asserting elements:
+        - `assertMatchedElements(perform: { element in /*...*/ })`
 
 - `CGVector` extensions:
     - Normalized offsets:
@@ -86,7 +88,7 @@ Utilities for easier interaction with XCUITest methods.
     - `run("Activity name") { ... }`
 
 All of the above assertion functions have optional message as last parameter that can be used to configure what is displayed if assertion fails. For example: `element.assertExists("My element should be visible")`.
-Additionally you can configure assertion timeout globally by modifying `XCAppTestTimeout.default` or per call via `timeout` parameter. For example: `XCAppTestTimeout.default = 3`, `element.assertExists(timeout: 3)`.
+Additionally you can configure assertion timeout globally by modifying `XCAppTestConfig.defaultTimeout` or per call via `timeout` parameter. For example: `XCAppTestConfig.defaultTimeout = 3`, `element.assertExists(timeout: 3)`.
 For details see [documentation](https://swiftpackageindex.com/Tunous/XCAppTest/main/documentation/xcapptest).
 
 ## Example
@@ -120,7 +122,7 @@ func testOpenClosePremiumScreen() throws {
 1. Add the following to the dependencies array in your `Package.swift` file:
 
 ```swift
-.package(url: "https://github.com/Tunous/XCAppTest.git", .upToNextMajor(from: "0.4.0")),
+.package(url: "https://github.com/Tunous/XCAppTest.git", .upToNextMajor(from: "0.14.0")),
 ```
 
 2. Add `XCAppTest` as a dependency for your **tests** target:
