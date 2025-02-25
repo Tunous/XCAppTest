@@ -117,6 +117,14 @@ extension XCUIElement {
         self.coordinate(withNormalizedOffset: normalizedOffset).tap()
         return self
     }
+    
+    /// Taps the coordinate at the center of the element.
+    ///
+    /// - Returns: Unmodified UI element.
+    @discardableResult
+    public func tapCenter() -> Self {
+        return tap(withNormalizedOffset: .center)
+    }
 
     /// Initiates a press-and-hold gesture at `startPoint`, then drags to `endPoint`.
     ///

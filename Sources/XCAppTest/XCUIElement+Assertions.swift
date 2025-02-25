@@ -476,8 +476,6 @@ extension XCUIElement {
         return self
     }
 
-    // MARK: - Checking traits
-
     /// Asserts that the current UI element is selected.
     ///
     /// - Parameters:

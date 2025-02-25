@@ -43,6 +43,7 @@ Utilities for easier interaction with XCUITest methods.
         - `press(forDuration: 1, withNormalizedOffset: .center)`
         - `pressWhenReady(forDuration: 2)`
         - `tapIfExists()`
+        - `tapCenter()`
     - Accessing properties of elements:
         - `stringValue`
 
