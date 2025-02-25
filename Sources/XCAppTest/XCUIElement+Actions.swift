@@ -56,7 +56,7 @@ extension XCUIElement {
             assertExists(
                 waitForAppToIdle: true,
                 timeout: timeout,
-                message() ?? "\(self) should exists to tap on it.",
+                message() ?? "\(self) should exist to tap on it.",
                 file: file,
                 line: line
             )
@@ -205,7 +205,7 @@ extension XCUIElement {
             assertExists(
                 waitForAppToIdle: true,
                 timeout: timeout,
-                message() ?? "\(self) should exists to press on it.",
+                message() ?? "\(self) should exist to press on it.",
                 file: file,
                 line: line
             )
