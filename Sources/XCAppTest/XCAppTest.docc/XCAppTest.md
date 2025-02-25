@@ -97,6 +97,8 @@ element.assertExists(timeout: 3)
 - ``XCAppTest/XCTest/XCUIElement/pressWhenReady(forDuration:timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/tapIfExists(timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/tapCenter()``
+- ``XCAppTest/XCTest/XCUIElement/deleteText()``
+- ``XCAppTest/XCTest/XCUIElement/deleteText(_:)``
 - ``XCAppTest/XCTest/XCUIApplication/moveToBackground(_:)``
 
 ### Accessing properties of elements

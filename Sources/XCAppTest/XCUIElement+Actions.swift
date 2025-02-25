@@ -106,6 +106,32 @@ extension XCUIElement {
         }
         return self
     }
+    
+    /// Deletes whole text from this element by repeatedly pressing delete key.
+    ///
+    /// - Returns: UI element with deleted text.
+    @discardableResult
+    public func deleteText() -> Self {
+        let charactersToDelete = self.stringValue?.count ?? 0
+        if charactersToDelete > 0 {
+            return deleteText(charactersToDelete)
+        }
+        return self
+    }
+    
+    /// Deletes `charactersToDelete` number of characters from this element by repeatedly pressing delete key.
+    ///
+    /// - Parameter charactersToDelete: The number of characters to delete.
+    /// - Returns: UI element with deleted characters.
+    @discardableResult
+    public func deleteText(_ charactersToDelete: Int) -> Self {
+        XCTContext.runActivity(named: "Delete \(charactersToDelete) characters") { _ in
+            for _ in 0..<charactersToDelete {
+                typeText(XCUIKeyboardKey.delete.rawValue)
+            }
+        }
+        return self
+    }
 
     #if !os(tvOS)
     /// Taps the element at normalized offset from its origin.

@@ -44,6 +44,8 @@ Utilities for easier interaction with XCUITest methods.
         - `pressWhenReady(forDuration: 2)`
         - `tapIfExists()`
         - `tapCenter()`
+        - `deleteText()`
+        - `deleteText(3)`
     - Accessing properties of elements:
         - `stringValue`
 
