@@ -47,110 +47,13 @@ element.assertExists(timeout: 3)
 
 ## Topics
 
+- ``XCAppTest/XCTest/XCUIElement``
+- ``XCAppTest/XCTest/XCUIElementQuery``
+- ``XCAppTest/XCTest/XCUIApplication``
+- ``XCAppTest/XCTest/XCTestCase``
+- ``XCAppTest/CoreFoundation/CGVector``
+- ``XCAppTest/XCAppTestConfig``
+
 ### Tips
 
 - <doc:TypeSafeIdentifiers>
-
-### Checking existence of elements
-
-- ``XCAppTest/XCTest/XCUIElement/assertExists(waitForAppToIdle:timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertNotExists(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertExists(_:timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElementQuery/assertNotExists(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElementQuery/assertExists(timeout:_:file:line:)``
-
-### Checking interactivity of elements
-
-- ``XCAppTest/XCTest/XCUIElement/assertIsHittable(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsNotHittable(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsHittable(_:timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsEnabled(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsDisabled(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsEnabled(_:timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsInteractive(timeout:_:file:line:)``
-
-### Checking properties of elements
-
-- ``XCAppTest/XCTest/XCUIElement/assertHasLabel(_:timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertContainsText(_:timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertHasValue(_:timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsOn(_:timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsOff(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertHasPlaceholder(_:timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsEmpty(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertHasTitle(_:timeout:_:file:line:)``
-
-### Checking traits of elements
-
-- ``XCAppTest/XCTest/XCUIElement/assertIsSelected(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsNotSelected(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertIsSelected(_:timeout:_:file:line:)``
-
-### Performing actions
-
-- ``XCAppTest/XCTest/XCUIElement/tapWhenReady(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/waitForInteractivity(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/slowTypeText(_:)``
-- ``XCAppTest/XCTest/XCUIElement/tap(withNormalizedOffset:)``
-- ``XCAppTest/XCTest/XCUIElement/drag(from:to:pressDuration:)``
-- ``XCAppTest/XCTest/XCUIElement/press(forDuration:withNormalizedOffset:)``
-- ``XCAppTest/XCTest/XCUIElement/pressWhenReady(forDuration:timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/tapIfExists(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/tapCenter()``
-- ``XCAppTest/XCTest/XCUIElement/deleteText()``
-- ``XCAppTest/XCTest/XCUIElement/deleteText(_:)``
-- ``XCAppTest/XCTest/XCUIApplication/moveToBackground(_:)``
-
-### Accessing properties of elements
-
-- ``XCAppTest/XCTest/XCUIElement/stringValue``
-
-### Accessing elements
-
-- ``XCAppTest/XCTest/XCUIElementQuery/lastMatch``
-- ``XCAppTest/XCTest/XCUIElementQuery/subscript(_:)``
-- ``XCAppTest/XCTest/XCUIElementQuery/first(where:)``
-- ``XCAppTest/XCTest/XCUIElementQuery/bannerNotifications``
-- ``XCAppTest/XCTest/XCUIElement/bannerNotifications``
-- ``XCAppTest/XCTest/XCUIElement/ElementType/bannerNotification``
-
-### Accessing other apps
-
-- ``XCAppTest/XCTest/XCUIApplication/safari``
-- ``XCAppTest/XCTest/XCUIApplication/springboard``
-- ``XCAppTest/XCTest/XCUIApplication/messages``
-- ``XCAppTest/XCTest/XCUIApplication/settings``
-
-### Checking foreground state
-
-- ``XCAppTest/XCTest/XCUIApplication/assertIsInForeground(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIApplication/assertIsNotInForeground(timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIApplication/assertIsInForeground(_:timeout:_:file:line:)``
-
-### Asserting multiple elements
-
-- ``XCAppTest/XCTest/XCUIElementQuery/assertHasCount(_:timeout:_:file:line:)-6w6h2``
-- ``XCAppTest/XCTest/XCUIElementQuery/assertHasCount(_:timeout:_:file:line:)-1745l``
-- ``XCAppTest/XCTest/XCUIElementQuery/assertMatchedElements(perform:)``
-
-### Configuration
-
-- ``XCAppTest/XCAppTestConfig``
-- ``XCAppTest/XCAppTestConfig/defaultTimeout``
-
-### Normalized offsets
-
-- ``CoreFoundation/CGVector/topLeft``
-- ``CoreFoundation/CGVector/top``
-- ``CoreFoundation/CGVector/topRight``
-- ``CoreFoundation/CGVector/left``
-- ``CoreFoundation/CGVector/center``
-- ``CoreFoundation/CGVector/right``
-- ``CoreFoundation/CGVector/bottomLeft``
-- ``CoreFoundation/CGVector/bottom``
-- ``CoreFoundation/CGVector/bottomRight``
-- ``CoreFoundation/CGVector/offset(x:y:)``
-
-### Running activities
-
-- ``XCAppTest/XCTest/XCTestCase/run(_:function:block:)``
