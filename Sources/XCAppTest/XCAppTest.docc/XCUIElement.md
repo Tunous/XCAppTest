@@ -28,6 +28,7 @@
 - ``XCAppTest/XCTest/XCUIElement/assertHasPlaceholder(_:timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertIsEmpty(timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertHasTitle(_:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertHasNonEmptyStringValue(timeout:_:file:line:)``
 
 ### Checking traits of elements
 

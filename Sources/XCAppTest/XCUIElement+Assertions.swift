@@ -355,6 +355,32 @@ extension XCUIElement {
         )
         return self
     }
+    
+    /// Asserts that the current UI element has non empty string as its raw attribute value.
+    ///
+    /// - Parameters:
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element.   
+    @discardableResult
+    public func assertHasNonEmptyStringValue(
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        assert(
+            named: "Assert \(self) has non empty string value",
+            condition: { $0.stringValue?.isEmpty == false },
+            timeout: timeout,
+            message() ?? "\(self) has empty string value. Expected empty but found '\(self.value ?? "")'",
+            file: file,
+            line: line
+        )
+        return self
+    }
 
     /// Asserts that the current UI element's raw attribute value corresponds to given on/off state.
     ///

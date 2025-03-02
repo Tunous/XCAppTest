@@ -30,6 +30,7 @@ Utilities for easier interaction with XCUITest methods.
         - `assertHasPlaceholder("placeholder")`
         - `assertIsEmpty()` (value == placeholderValue)
         - `assertHasTitle("title")`
+        - `assertHasNonEmptyStringValue()`
     - Checking traits of elements:
         - `assertIsSelected()`
         - `assertIsNotSelected()`
