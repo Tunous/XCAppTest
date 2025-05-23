@@ -22,13 +22,14 @@
 
 - ``XCAppTest/XCTest/XCUIElement/assertHasLabel(_:timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertContainsText(_:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertHasValue(_:timeout:_:file:line:)-7602a``
 - ``XCAppTest/XCTest/XCUIElement/assertHasValue(_:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertHasNonEmptyStringValue(timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertIsOn(_:timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertIsOff(timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertHasPlaceholder(_:timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertIsEmpty(timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertHasTitle(_:timeout:_:file:line:)``
-- ``XCAppTest/XCTest/XCUIElement/assertHasNonEmptyStringValue(timeout:_:file:line:)``
 
 ### Checking traits of elements
 

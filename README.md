@@ -24,6 +24,7 @@ Utilities for easier interaction with XCUITest methods.
         - `assertHasLabel("label")`
         - `assertContainsText("label")`
         - `assertHasValue("equatable value")`
+        - `assertHasValue()`
         - `assertIsOn()`
         - `assertIsOff()`
         - `assertIsOn(false)`
