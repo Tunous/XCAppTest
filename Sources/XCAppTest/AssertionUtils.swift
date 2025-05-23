@@ -1,24 +1,9 @@
 import XCTest
 
-extension XCUIElement {
+extension XCUIElementTypeQueryProvider {
     func assert(
         named assertionName: String,
-        condition: @escaping (XCUIElement) -> Bool,
-        timeout: TimeInterval,
-        _ message: @autoclosure () -> String,
-        file: StaticString,
-        line: UInt
-    ) {
-        XCTContext.runActivity(named: assertionName) { _ in
-            XCAppTest.assert(condition: condition, on: self, timeout: timeout, message: message, file: file, line: line)
-        }
-    }
-}
-
-extension XCUIElementQuery {
-    func assert(
-        named assertionName: String,
-        condition: @escaping (XCUIElementQuery) -> Bool,
+        condition: @escaping (Self) -> Bool,
         timeout: TimeInterval,
         _ message: @autoclosure () -> String,
         file: StaticString,

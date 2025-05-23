@@ -50,6 +50,8 @@ Utilities for easier interaction with XCUITest methods.
         - `deleteText(3)`
     - Accessing properties of elements:
         - `stringValue`
+        - `intValue`
+        - `isOn`
 
 - `XCUIApplication` extensions:
     - Accessing other apps:

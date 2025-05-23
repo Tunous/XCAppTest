@@ -423,7 +423,15 @@ extension XCUIElement {
         file: StaticString = #file,
         line: UInt = #line
     ) -> Self {
-        return assertHasValue(isOn ? "1" : "0", timeout: timeout, message(), file: file, line: line)
+        assert(
+            named: "Assert \(self) is on",
+            condition: { $0.isOn == isOn },
+            timeout: timeout,
+            message() ?? "\(self) has incorrect on state. Expected value to be '\(isOn ? "1" : "0")' but found '\(self.value ?? "")'",
+            file: file,
+            line: line
+        )
+        return self
     }
 
     /// Asserts that the current UI element's raw attribute value corresponds to off state.

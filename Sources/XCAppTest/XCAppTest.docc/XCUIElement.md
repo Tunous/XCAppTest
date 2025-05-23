@@ -54,6 +54,8 @@
 ### Accessing properties of elements
 
 - ``XCAppTest/XCTest/XCUIElement/stringValue``
+- ``XCAppTest/XCTest/XCUIElement/intValue``
+- ``XCAppTest/XCTest/XCUIElement/isOn``
 
 ### Accessing elements
 
