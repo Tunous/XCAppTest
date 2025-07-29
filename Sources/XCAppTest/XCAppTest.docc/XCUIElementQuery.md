@@ -6,6 +6,7 @@
 
 - ``XCAppTest/XCTest/XCUIElementQuery/assertNotExists(timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElementQuery/assertExists(timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElementQuery/assertExists(_:timeout:_:file:line:)``
 
 ### Accessing elements
 

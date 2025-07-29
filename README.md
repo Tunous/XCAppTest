@@ -72,6 +72,7 @@ Utilities for easier interaction with XCUITest methods.
         - `assertNotExists()`
         - `assertHasCount(2...5)`, `assertHasCount(..<3)`
         - `assertExists()`
+        - `assertExists(true)`
     - Accessing elements:
         - `lastMatch`
         - `self[2]`

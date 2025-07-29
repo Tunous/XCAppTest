@@ -72,13 +72,13 @@ extension XCUIElementQuery {
     public func assertNotExists(
         timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
         _ message: @autoclosure () -> String? = nil,
-         file: StaticString = #file,
-         line: UInt = #line
+        file: StaticString = #file,
+        line: UInt = #line
     ) -> Self {
         return assertHasCount(
             0,
             timeout: timeout,
-            message() ?? "\(self) should return no results but returned \(self.count)",
+            message() ?? "\(self) should return NO results but returned \(self.count)",
             file: file,
             line: line
         )
@@ -106,6 +106,30 @@ extension XCUIElementQuery {
             file: file,
             line: line
         )
+    }
+
+    /// Evaluates the query and asserts existence based on the expected boolean value.
+    ///
+    /// - Parameters:
+    ///   - exists: A boolean indicating whether the element is expected to exist.
+    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
+    ///   - message: An optional description of a failure.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: Unmodified UI element query.
+    @discardableResult
+    public func assertExists(
+        _ exists: Bool,
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        if exists {
+            return assertExists(timeout: timeout, message(), file: file, line: line)
+        } else {
+            return assertNotExists(timeout: timeout, message(), file: file, line: line)
+        }
     }
 
     /// Evaluates the query and verifies matched elements in order.
