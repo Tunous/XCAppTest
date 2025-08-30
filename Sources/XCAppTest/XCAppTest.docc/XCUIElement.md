@@ -21,6 +21,7 @@
 ### Checking properties of elements
 
 - ``XCAppTest/XCTest/XCUIElement/assertHasLabel(_:timeout:_:file:line:)``
+- ``XCAppTest/XCTest/XCUIElement/assertLabel(_:timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertContainsText(_:timeout:_:file:line:)``
 - ``XCAppTest/XCTest/XCUIElement/assertHasValue(_:timeout:_:file:line:)-7602a``
 - ``XCAppTest/XCTest/XCUIElement/assertHasValue(_:timeout:_:file:line:)``

@@ -300,6 +300,34 @@ extension XCUIElement {
         return self
     }
 
+    /// Asserts that the current UI element's label matches a custom condition.
+    ///
+    /// - Parameters:
+    ///   - condition: A closure that takes the element's `label` string and returns `true` if it satisfies the condition, `false` otherwise.
+    ///   - timeout: The number of seconds within which the expectation must be fulfilled. Defaults to `XCAppTestConfig.defaultTimeout`.
+    ///   - message: An optional description of a failure. Defaults to a generated message.
+    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
+    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
+    /// - Returns: The unmodified UI element.
+    @discardableResult
+    public func assertLabel(
+        _ condition: @escaping (String) -> Bool,
+        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
+        _ message: @autoclosure () -> String? = nil,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) -> Self {
+        assert(
+            named: "Assert \(self) label matches custom condition",
+            condition: { condition($0.label) },
+            timeout: timeout,
+            message() ?? "\(self) has incorrect label. Expected '\(self.label)' to match custom condition",
+            file: file,
+            line: line
+        )
+        return self
+    }
+
     /// Asserts that the current UI element's `label` contains given `text`.
     ///
     /// - Parameters:

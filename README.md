@@ -22,6 +22,7 @@ Utilities for easier interaction with XCUITest methods.
         - `assertIsInteractive()` (exists, isHittable, isEnabled)
     - Checking properties of elements:
         - `assertHasLabel("label")`
+        - `assertLabel { $0 == "label" }`
         - `assertContainsText("label")`
         - `assertHasValue("equatable value")`
         - `assertHasValue()`
