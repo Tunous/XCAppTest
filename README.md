@@ -131,7 +131,7 @@ func testOpenClosePremiumScreen() throws {
 1. Add the following to the dependencies array in your `Package.swift` file:
 
 ```swift
-.package(url: "https://github.com/Tunous/XCAppTest.git", .upToNextMajor(from: "0.14.0")),
+.package(url: "https://github.com/Tunous/XCAppTest.git", .upToNextMajor(from: "1.4.0")),
 ```
 
 2. Add `XCAppTest` as a dependency for your **tests** target:
