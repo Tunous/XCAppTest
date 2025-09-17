@@ -65,28 +65,21 @@ extension XCUIElement {
         return self
     }
 
-    /// Taps on element if it exists. If the element doesn't exist no action will be performed..
+    /// Taps on element if it exists. If the element doesn't exist no action will be performed.
     ///
     /// - Parameters:
-    ///   - timeout: The number of seconds within which all expectations must be fulfilled.
     ///   - message: An optional description of a failure.
-    ///   - file: The file where the failure occurs. The default is the filename of the test case where you call this function.
-    ///   - line: The line number where the failure occurs. The default is the line number where you call this function.
-    /// - Returns: Unmodified UI element.
+    /// - Returns: `true` if element was tapped; `false` otherwise.
     @discardableResult
     @available(tvOS, unavailable)
-    public func tapIfExists(
-        timeout: TimeInterval = XCAppTestConfig.defaultTimeout,
-        _ message: @autoclosure () -> String? = nil,
-        file: StaticString = #file,
-        line: UInt = #line
-    ) -> Self {
-        XCTContext.runActivity(named: "Tap \(self) if exists") { _ in
+    public func tapIfExists(_ message: @autoclosure () -> String? = nil) -> Bool {
+        return XCTContext.runActivity(named: "Tap \(self) if exists") { _ in
             if exists {
                 tap()
+                return true
             }
+            return false
         }
-        return self
     }
 
     /// Slowly types a string into the element.
